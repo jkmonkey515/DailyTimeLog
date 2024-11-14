@@ -7,6 +7,11 @@ import '../../4_utils/route.dart';
 class OnboardingController extends GetxController {
   final cache = GetStorage();
   TextEditingController textController = TextEditingController();
+
+  TextEditingController passController = TextEditingController();
+  var isPasswordVisible = false.obs;
+  var isFieldsFilled = false.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -17,7 +22,12 @@ class OnboardingController extends GetxController {
     print(returnValue);
   }
   gotoNextView() {
-    // Get.offNamed(RouteName.onboardingView);
-    textController.text="test";
+    Get.offNamed(RouteName.maintabView);
+    // textController.text="test";
   }
+
+  void updatePasswordVisible() {
+    isPasswordVisible.value = !isPasswordVisible.value;
+  }
+
 }
