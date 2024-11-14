@@ -5,6 +5,9 @@ import '../../4_utils/route.dart';
 
 class ProfileController extends GetxController {
   final cache = GetStorage();
+
+  var checkedValue = false.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -14,4 +17,8 @@ class ProfileController extends GetxController {
   gotoNextView() {
     // Get.offNamed(RouteName.onboardingView);
   }
+  void updateCheckbox() {
+    checkedValue.value = !checkedValue.value;
+  }
+
 }

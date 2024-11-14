@@ -4,7 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import '../../4_utils/route.dart';
 
 
-class SettingsController extends GetxController {
+class ChangePasswordController extends GetxController {
   final cache = GetStorage();
 
   TextEditingController txtPassword = TextEditingController();
@@ -32,10 +32,6 @@ class SettingsController extends GetxController {
   }
 
   gotoNextView(String menuTitle) {
-    if(menuTitle.contains('Password')) {
-      Get.toNamed(RouteName.changePasswordView);
-    } else {
-      Get.toNamed(RouteName.profileView);
-    }
+
   }
 }

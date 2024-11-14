@@ -27,16 +27,3 @@ class HSpaceWith extends StatelessWidget {
     return SizedBox(width: width);
   }
 }
-
-class AppSpacer extends StatelessWidget {
-  const AppSpacer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Expanded(
-      child: Text(
-          ' '
-      ),
-    );
-  }
-}

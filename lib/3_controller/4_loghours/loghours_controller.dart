@@ -1,17 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../4_utils/route.dart';
 
 
 class LoghoursController extends GetxController {
   final cache = GetStorage();
+
+  TextEditingController txtHours = TextEditingController();
+
   @override
   void onInit() {
     super.onInit();
 
   }
 
-  gotoNextView() {
-    // Get.offNamed(RouteName.onboardingView);
+  onChangeHoursCallback(int value){
+    print(value);
+  }
+
+
+  doSaveAction() {
+
   }
 }
