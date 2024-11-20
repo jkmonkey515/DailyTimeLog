@@ -4,6 +4,7 @@ import 'package:dailytimelog/2_view/4_loghours/loghours_view.dart';
 import 'package:dailytimelog/2_view/5_statistics/statistics_view.dart';
 import 'package:dailytimelog/2_view/6_profile/profile_view.dart';
 import 'package:dailytimelog/2_view/7_settings/change_password_view.dart';
+import 'package:dailytimelog/2_view/7_settings/profeatures_view.dart';
 import 'package:dailytimelog/2_view/7_settings/settings_view.dart';
 import 'package:dailytimelog/3_controller/1_splash/splash_controller.dart';
 import 'package:dailytimelog/3_controller/2_onboarding/onboarding_controller.dart';
@@ -12,6 +13,7 @@ import 'package:dailytimelog/3_controller/4_loghours/loghours_controller.dart';
 import 'package:dailytimelog/3_controller/5_statistics/statistics_controller.dart';
 import 'package:dailytimelog/3_controller/6_profile/profile_controller.dart';
 import 'package:dailytimelog/3_controller/7_settings/change_password_controller.dart';
+import 'package:dailytimelog/3_controller/7_settings/profeatures_controller.dart';
 import 'package:dailytimelog/3_controller/7_settings/settings_controller.dart';
 import 'package:get/get.dart';
 
@@ -26,12 +28,19 @@ class RouteName {
   static const String profileView = "/ProfileView";
   static const String settingsView = "/SettingsView";
   static const String changePasswordView = "/ChangePasswordView";
+  static const String profeaturesView = "/ProfeaturesView";
 
 }
 
 
 abstract class Routes {
   static final routes = [
+    GetPage(
+        name: RouteName.profeaturesView,
+        page: () => const ProfeaturesView(),
+        binding: BindingsBuilder(() {
+          Get.put(ProfeaturesController());
+        })),
     GetPage(
         name: RouteName.changePasswordView,
         page: () => const ChangePasswordView(),

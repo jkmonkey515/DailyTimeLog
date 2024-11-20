@@ -77,13 +77,13 @@ class MainTabView extends GetView<MainTabController> {
             ],
             selectedLabelStyle: const TextStyle(
               color: Color(0xFFFD7840),
-              fontFamily: 'Quicksand',
+              fontFamily: 'Odin Rounded',
               fontWeight: FontWeight.w700,
               height: 0,
             ),
             unselectedLabelStyle: const TextStyle(
               color: Color(0xFF59605F),
-              fontFamily: 'Quicksand',
+              fontFamily: 'Odin Rounded',
               fontWeight: FontWeight.w700,
               height: 0,
             ),
