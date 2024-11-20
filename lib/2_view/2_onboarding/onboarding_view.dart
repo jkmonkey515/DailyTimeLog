@@ -2,9 +2,10 @@ import 'package:dailytimelog/3_controller/2_onboarding/onboarding_controller.dar
 import 'package:dailytimelog/4_utils/color.dart';
 import 'package:dailytimelog/5_components/custom_button.dart';
 import 'package:dailytimelog/5_components/custom_spacers.dart';
-import 'package:dailytimelog/5_components/custom_textfield.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+
+import '../../4_utils/theme.dart';
 
 class OnboardingView extends GetView<OnboardingController> {
   const OnboardingView({super.key});
@@ -12,17 +13,12 @@ class OnboardingView extends GetView<OnboardingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: colorBackground,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Register',
           textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 24.0,
-              color: Color(0xFF171717),
-              fontFamily: 'Quicksand',
-              fontWeight: FontWeight.w700
-          ),
+          style: textStyleNavigationTitle(),
         ),
         scrolledUnderElevation: 0,
         centerTitle: true,
@@ -33,9 +29,14 @@ class OnboardingView extends GetView<OnboardingController> {
         alignment: Alignment.center,
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             const Spacer(),
+            Text(
+              'Enter password',
+              style: textStyleDefault(),
+            ),
+            const VSpaceWith(height: 12),
 
             passwordTextField(),
 
@@ -66,7 +67,7 @@ class OnboardingView extends GetView<OnboardingController> {
         padding: const EdgeInsets.only(left: 12, right: 5, ),
         decoration: BoxDecoration(
           border: Border.all(
-            color: appGray, // Custom border color
+            color: appPrimaryColor,
             width: 2.0, // Border width
           ),
           borderRadius: BorderRadius.circular(10), // Border radius
@@ -101,7 +102,7 @@ class OnboardingView extends GetView<OnboardingController> {
                     },
                   icon: Icon(
                     controller.isPasswordVisible.value ? Icons.visibility_off :  Icons.visibility ,
-                    color: Colors.red,
+                    color: appPrimaryColor,
                     size: 24,
                   ),
                 ),

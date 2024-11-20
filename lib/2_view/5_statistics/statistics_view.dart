@@ -5,6 +5,9 @@ import 'package:dailytimelog/4_utils/color.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
+import '../../4_utils/theme.dart';
+import '../../5_components/custom_spacers.dart';
+
 class StatisticsView extends GetView<StatisticsController> {
   const StatisticsView({super.key});
 
@@ -13,18 +16,12 @@ class StatisticsView extends GetView<StatisticsController> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: colorBackground,
         appBar: AppBar(
-          title: const Text(
+          title: Text(
             'Statistics',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Color(0xFF171717),
-              fontSize: 20,
-              fontFamily: 'Quicksand',
-              fontWeight: FontWeight.w700,
-              height: 0,
-            ),
+            style: textStyleNavigationTitle(),
           ),
           centerTitle: true,
           scrolledUnderElevation: 0,
@@ -36,6 +33,7 @@ class StatisticsView extends GetView<StatisticsController> {
             padding: const EdgeInsets.all(8.0),
             child: Stack(
               children: [
+                const VSpaceWith(height: 20),
                 const SegmentedTabControl(
                   tabTextColor: Colors.white,
                   selectedTabTextColor:  Colors.black,
@@ -94,20 +92,30 @@ class StatisticsView extends GetView<StatisticsController> {
   Widget weeklyView() {
     return Column(
       children: [
-        const Text(
-          'weekly data here'
+        Text(
+          'weekly data here',
+          style: textStyleDefault(),
         ),
-        
-        Image.asset('assets/barchart.png')
+
+        Image.asset('assets/barchart.png', height: 200, fit: BoxFit.fitHeight,),
+
+        const VSpaceWith(height: 20),
+
+        Image.asset('assets/piechart.jpg'),
       ],
     );
   }
   Widget monthlyView() {
     return Column(
       children: [
-        const Text(
-          'monthly data here'
+         Text(
+          'monthly data here',
+           style: textStyleDefault(),
         ),
+
+        Image.asset('assets/barchart.png'),
+
+        const VSpaceWith(height: 20),
 
         Image.asset('assets/piechart.jpg'),
       ],
@@ -116,11 +124,14 @@ class StatisticsView extends GetView<StatisticsController> {
   Widget yearlyView() {
     return Column(
       children: [
-        const Text(
-          'yearly data here'
+        Text(
+          'yearly data here',
+          style: textStyleDefault(),
         ),
 
         Image.asset('assets/barchart.png'),
+
+        const VSpaceWith(height: 20),
 
         Image.asset('assets/piechart.jpg'),
       ],

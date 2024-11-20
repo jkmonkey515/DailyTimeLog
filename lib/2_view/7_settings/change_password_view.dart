@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../3_controller/7_settings/change_password_controller.dart';
 import '../../4_utils/color.dart';
+import '../../4_utils/theme.dart';
 
 class ChangePasswordView extends GetView<ChangePasswordController> {
   const ChangePasswordView({super.key});
@@ -12,17 +13,12 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: colorBackground,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Change Password',
           textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 24.0,
-              color: Color(0xFF171717),
-              fontFamily: 'Quicksand',
-              fontWeight: FontWeight.w700
-          ),
+          style: textStyleNavigationTitle(),
         ),
         scrolledUnderElevation: 0,
         centerTitle: true,
@@ -35,14 +31,20 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const VSpaceWith(height: 20),
+
             const Text(
-                'Change Password:'
+                'Old Password:'
             ),
 
             const VSpaceWith(height: 10),
             currentPasswordTextField(),
 
             const VSpaceWith(height: 20),
+            const Text(
+                'New Password:'
+            ),
+            const VSpaceWith(height: 10),
             newPasswordTextField(),
 
             const Spacer(),
@@ -63,7 +65,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
         padding: const EdgeInsets.only(left: 12, right: 5, ),
         decoration: BoxDecoration(
           border: Border.all(
-            color: appGray, // Custom border color
+            color: appPrimaryColor,
             width: 2.0, // Border width
           ),
           borderRadius: BorderRadius.circular(10), // Border radius
@@ -114,7 +116,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
         padding: const EdgeInsets.only(left: 12, right: 5, ),
         decoration: BoxDecoration(
           border: Border.all(
-            color: appGray, // Custom border color
+            color: appPrimaryColor,
             width: 2.0, // Border width
           ),
           borderRadius: BorderRadius.circular(10), // Border radius
