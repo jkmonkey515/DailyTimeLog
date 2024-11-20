@@ -19,7 +19,7 @@ class CustomTextfield extends StatelessWidget {
     required this.controller,
     required this.onChangeCallback,
     this.inputType = TextInputType.text,
-    this.borderColor = appGray,
+    this.borderColor = appPrimaryColor,
     this.errorBorderColor = Colors.red,
     this.maxLength=100
   });
@@ -75,7 +75,7 @@ class CustomTextfield extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 12,),
         ),
         onChanged: (val) {
-          onChangeCallback(val);
+            onChangeCallback(val);
           },
       ),
     );

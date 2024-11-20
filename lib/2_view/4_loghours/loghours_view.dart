@@ -6,6 +6,7 @@ import 'package:dailytimelog/5_components/custom_textfield.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
+import '../../4_utils/color.dart';
 import '../../4_utils/theme.dart';
 
 class LoghoursView extends GetView<LoghoursController> {
@@ -14,17 +15,12 @@ class LoghoursView extends GetView<LoghoursController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: colorBackground,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Log Hours',
           textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 24.0,
-              color: Color(0xFF171717),
-              fontFamily: 'Quicksand',
-              fontWeight: FontWeight.w700
-          ),
+          style: textStyleNavigationTitle(),
         ),
         scrolledUnderElevation: 0,
         centerTitle: true,
@@ -32,16 +28,16 @@ class LoghoursView extends GetView<LoghoursController> {
         elevation: 0,
       ),
       body:  Container(
-        // alignment: Alignment.center,
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const VSpaceWith(height: 20),
             Text(
               'Select Date:',
-              textAlign: TextAlign.center,
-              style: appDefaultTextStyle(),
+              style: textStyleDefault(),
             ),
+            const VSpaceWith(height: 8),
 
             CustomTextfield(
                 placeholder: 'Select Date',
@@ -53,9 +49,9 @@ class LoghoursView extends GetView<LoghoursController> {
             Text(
               'Activity Type:',
               textAlign: TextAlign.center,
-              style: appDefaultTextStyle(),
+              style: textStyleDefault(),
             ),
-
+            const VSpaceWith(height: 8),
             CustomTextfield(
                 placeholder: 'Enter hours',
                 controller: controller.txtHours,
@@ -65,9 +61,9 @@ class LoghoursView extends GetView<LoghoursController> {
             Text(
               'Hours:',
               textAlign: TextAlign.center,
-              style: appDefaultTextStyle(),
+              style: textStyleDefault(),
             ),
-
+            const VSpaceWith(height: 8),
             CustomTextfield(
                 placeholder: 'Enter hours',
                 controller: controller.txtHours,
@@ -92,7 +88,7 @@ class LoghoursView extends GetView<LoghoursController> {
     return Text(
       'Select Date:',
       textAlign: TextAlign.center,
-      style: appDefaultTextStyle(),
+      style: textStyleDefault(),
     );
   }
 
@@ -100,7 +96,7 @@ class LoghoursView extends GetView<LoghoursController> {
     return Text(
       'Activity Type',
       textAlign: TextAlign.center,
-      style: appDefaultTextStyle(),
+      style: textStyleDefault(),
     );
   }
 

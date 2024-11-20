@@ -20,5 +20,8 @@ class ProfileController extends GetxController {
   void updateCheckbox() {
     checkedValue.value = !checkedValue.value;
   }
+  gotoProfeatureView() {
+    Get.toNamed(RouteName.profeaturesView);
+  }
 
 }

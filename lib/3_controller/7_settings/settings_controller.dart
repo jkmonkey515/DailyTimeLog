@@ -32,9 +32,14 @@ class SettingsController extends GetxController {
   }
 
   gotoNextView(String menuTitle) {
+    if(menuTitle.contains('Export')) {
+      // do export data action
+    }
     if(menuTitle.contains('Password')) {
       Get.toNamed(RouteName.changePasswordView);
-    } else {
+    }
+
+    if(menuTitle.contains('Profile')) {
       Get.toNamed(RouteName.profileView);
     }
   }
