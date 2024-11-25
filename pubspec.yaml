@@ -43,6 +43,7 @@ dependencies:
   # SEGMENTED TAB CONTROL
   animated_segmented_tab_control: ^2.0.0
   date_picker_plus: ^4.1.0
+  webview_flutter: ^4.10.0
 
 
 dev_dependencies:
