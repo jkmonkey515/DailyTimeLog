@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "755457F3785F4D2E55FCAFA408242FD5"
-               BuildableName = "webview_flutter_wkwebview.framework"
-               BlueprintName = "webview_flutter_wkwebview"
+               BlueprintIdentifier = "42A5F24E847029301BC47B4E68477322"
+               BuildableName = "share_plus.framework"
+               BlueprintName = "share_plus"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

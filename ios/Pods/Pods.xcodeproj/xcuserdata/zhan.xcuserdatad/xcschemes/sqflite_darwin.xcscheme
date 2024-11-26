@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1600DCCFF1B483EC49C8CB09BBB7411C"
-               BuildableName = "webview_flutter_wkwebview_privacy.bundle"
-               BlueprintName = "webview_flutter_wkwebview-webview_flutter_wkwebview_privacy"
+               BlueprintIdentifier = "6178324C15B5DCE31C127429F0C8EE8F"
+               BuildableName = "sqflite_darwin.framework"
+               BlueprintName = "sqflite_darwin"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
