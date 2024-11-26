@@ -15,11 +15,14 @@ class OnboardingView extends GetView<OnboardingController> {
     return Scaffold(
       backgroundColor: colorBackground,
       appBar: AppBar(
-        title: Text(
-          'Register',
-          textAlign: TextAlign.center,
-          style: textStyleNavigationTitle(),
+        title: Obx(() =>
+            Text(
+              controller.isLogin.value==true?"Login":"Register",
+              textAlign: TextAlign.center,
+              style: textStyleNavigationTitle(),
+            ),
         ),
+
         scrolledUnderElevation: 0,
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -47,13 +50,15 @@ class OnboardingView extends GetView<OnboardingController> {
             // ),
 
             const VSpaceWith(height: 30),
-
-            CustomButton(
-              title: "SAVE",
-              onPressed: () {
-                controller.gotoNextView();
-              }
+            Obx(() =>
+                CustomButton(
+                    title: controller.isLogin.value==false? "SAVE":"Login",
+                    onPressed: () {
+                      controller.gotoNextView();
+                    }
+                ),
             ),
+
 
             const Spacer(),
           ],

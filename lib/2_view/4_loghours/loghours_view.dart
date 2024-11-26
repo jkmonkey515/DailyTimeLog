@@ -3,9 +3,11 @@ import 'package:dailytimelog/3_controller/4_loghours/loghours_controller.dart';
 import 'package:dailytimelog/5_components/custom_button.dart';
 import 'package:dailytimelog/5_components/custom_spacers.dart';
 import 'package:dailytimelog/5_components/custom_textfield.dart';
+import 'package:dailytimelog/6_models/category_model.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
+as picker;
 import '../../4_utils/color.dart';
 import '../../4_utils/theme.dart';
 
@@ -39,12 +41,39 @@ class LoghoursView extends GetView<LoghoursController> {
             ),
             const VSpaceWith(height: 8),
 
-            CustomTextfield(
-                placeholder: 'Select Date',
-                controller: controller.txtHours,
-                onChangeCallback: controller.onChangeHoursCallback),
+            Container(
+              margin: const EdgeInsets.only(bottom: 25),
+              child: GestureDetector(
+                onTap: () {
+                  picker.DatePicker.showDatePicker(context,
+                      showTitleActions: true,
+                      minTime: DateTime(2022, 3, 5),
+                      maxTime: DateTime(2030, 12, 31),
+                      theme: const picker.DatePickerTheme(
+                          headerColor: Colors.blue,
+                          backgroundColor: Colors.lightBlue,
+                          itemStyle: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
+                          doneStyle:
+                          TextStyle(color: Colors.white, fontSize: 16)),
+                      onChanged: (date) {
+                        // print('change $date in time zone ${date.timeZoneOffset.inHours}');
+                      }, onConfirm: (date) {
+                        //print('confirm $date');
+                        controller.edtDate.text = controller.getFormatedDate(date);
+                      }, currentTime: DateTime.now(), locale: picker.LocaleType.en);
+                },
+                child: Theme(
+                    data: ThemeData(disabledColor: Colors.blue, ),
+                    child: CustomTextfield(
+                        placeholder: 'Select Date',
+                        controller: controller.edtDate,
+                        onChangeCallback: controller.onChangeHoursCallback, isEnabled: false,)),
+              ),
+            ),
 
-            const VSpaceWith(height: 20),
 
             Text(
               'Activity Type:',
@@ -52,10 +81,54 @@ class LoghoursView extends GetView<LoghoursController> {
               style: textStyleDefault(),
             ),
             const VSpaceWith(height: 8),
-            CustomTextfield(
-                placeholder: 'Enter hours',
-                controller: controller.txtHours,
-                onChangeCallback: controller.onChangeHoursCallback),
+            GetBuilder(
+                init: controller,
+                id: 'category_item',
+                builder: (_)
+                {
+                  return
+                    Container(
+                      width: MediaQuery.of(context).size.width-40,
+                      padding: const EdgeInsets.only(left: 10, ),
+                      decoration: BoxDecoration(
+                        border: const Border(
+                          bottom: BorderSide(width: 1.5, color: appPrimaryColor),
+                          top: BorderSide(width: 1.5, color: appPrimaryColor),
+                          right: BorderSide(width: 1.5, color: appPrimaryColor),
+                          left: BorderSide(width: 1.5, color: appPrimaryColor),
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromARGB(10, 0, 0, 0)
+                      ),
+
+                      child: Theme(
+                        data: Theme.of(context).copyWith(brightness: Brightness.light),
+                        child : DropdownButton(
+                          value: controller.selectedCategory,
+                          icon: null,
+                          items: controller.categories.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: item == controller.selectedCategory?
+                              Container(
+                                width: MediaQuery.of(context).size.width-80,
+                                color: Colors.transparent,
+                                child: Text(
+                                  item,
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ) : Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            controller.selectedCategory=newValue??"";
+                            controller.refreshItem();
+                          },
+                        ),
+                      ),
+                    );
+                }),
+
 
             const VSpaceWith(height: 20),
             Text(

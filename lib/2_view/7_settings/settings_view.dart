@@ -46,12 +46,12 @@ class SettingsView extends GetView<SettingsController> {
 
             // profeatureView(),
             const VSpaceWith(height: 20),
-            CustomButton(
-                title: 'Upgrade',
-                onPressed: () {
-                  controller.doChangePassword();
-                }),
-            const VSpaceWith(height: 30),
+            // CustomButton(
+            //     title: 'Upgrade',
+            //     onPressed: () {
+            //       controller.doChangePassword();
+            //     }),
+            // const VSpaceWith(height: 30),
           ],
         ),
       ),

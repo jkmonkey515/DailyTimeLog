@@ -42,7 +42,7 @@ class ProfeaturesView extends GetView<ProfeaturesController> {
             CustomButton(
                 title: 'Upgrade',
                 onPressed: () {
-
+                  controller.tryIap();
                 }),
             const VSpaceWith(height: 30),
           ],

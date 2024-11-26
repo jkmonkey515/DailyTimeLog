@@ -10,7 +10,7 @@ class CustomTextfield extends StatelessWidget {
   final TextEditingController controller;
   final maxLength;
   final Function onChangeCallback;
-
+  final bool isEnabled;
   static const double fontSize = 17.0;
 
   const CustomTextfield({
@@ -21,7 +21,8 @@ class CustomTextfield extends StatelessWidget {
     this.inputType = TextInputType.text,
     this.borderColor = appPrimaryColor,
     this.errorBorderColor = Colors.red,
-    this.maxLength=100
+    this.maxLength=100,
+    this.isEnabled=true
   });
 
   @override
@@ -30,12 +31,20 @@ class CustomTextfield extends StatelessWidget {
       height: 50,
       child: TextField(
         controller: controller,
+        enabled: isEnabled,
         style: const TextStyle(
           fontSize: fontSize,
           color: Colors.black, // You can customize the text color as well
         ),
         decoration: InputDecoration(
           hintText: placeholder,
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0), // Set the border radius
+            borderSide: BorderSide(
+              color: borderColor, // Custom border color
+              width: 2.0, // Border width
+            ),
+          ),
           hintStyle: TextStyle(color: Colors.grey[500]), // Custom hint text color
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0), // Set the border radius
