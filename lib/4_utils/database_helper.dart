@@ -110,6 +110,21 @@ class DatabaseHelper {
     });
   }
 
+  Future<List<LogModel>> filterLogs(query) async {
+    Database? db = await instance.database;
+    final List<Map<String, dynamic>> maps = await db!.rawQuery('SELECT * FROM $tb_logs $query');
+    return List.generate(maps.length, (i) {
+      LogModel logModel = LogModel(
+        log_id: maps[i][log_id],
+        category_id: maps[i][category_id],
+        log_date: maps[i][log_date],
+        log_hour: maps[i][log_hour],
+        created_at: maps[i][created_at],
+      );
+      return logModel;
+    });
+  }
+
   Future<int> confirmCategoryNameExist(String categoryName) async{
     Database? db = await instance.database;
     List<Map<String, dynamic>> maps = await db!.rawQuery('SELECT * FROM $tb_category WHERE $category_name ="$categoryName"');

@@ -79,26 +79,7 @@ class LoghoursController extends GetxController {
     }
   }
 
-  String getFormatedDate(DateTime datetime) {
-    String datestring = "";
-    int dateValue = datetime.day;
-    int monthvalue = datetime.month;
-    if (dateValue < 10) {
-      datestring = "0${datetime.day}/";
-    } else {
-      datestring = "${datetime.day}/";
-    }
 
-    if (monthvalue < 10) {
-      datestring += "0${datetime.month}/";
-    } else {
-      datestring += "${datetime.month}/";
-    }
-
-    datestring += datetime.year.toString();
-
-    return datestring;
-  }
   String getDbStyleDate(String datetime) {
     String datestring = "";
     List<String> dateValue = datetime.split("/");

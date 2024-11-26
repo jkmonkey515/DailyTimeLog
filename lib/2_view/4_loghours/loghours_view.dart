@@ -1,14 +1,13 @@
-import 'package:dailytimelog/3_controller/2_onboarding/onboarding_controller.dart';
 import 'package:dailytimelog/3_controller/4_loghours/loghours_controller.dart';
 import 'package:dailytimelog/5_components/custom_button.dart';
 import 'package:dailytimelog/5_components/custom_spacers.dart';
 import 'package:dailytimelog/5_components/custom_textfield.dart';
-import 'package:dailytimelog/6_models/category_model.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
 as picker;
 import '../../4_utils/color.dart';
+import '../../4_utils/constats.dart';
 import '../../4_utils/theme.dart';
 
 class LoghoursView extends GetView<LoghoursController> {
@@ -62,7 +61,7 @@ class LoghoursView extends GetView<LoghoursController> {
                         // print('change $date in time zone ${date.timeZoneOffset.inHours}');
                       }, onConfirm: (date) {
                         //print('confirm $date');
-                        controller.edtDate.text = controller.getFormatedDate(date);
+                        controller.edtDate.text = Constants.getFormatedDate(date);
                       }, currentTime: DateTime.now(), locale: picker.LocaleType.en);
                 },
                 child: Theme(

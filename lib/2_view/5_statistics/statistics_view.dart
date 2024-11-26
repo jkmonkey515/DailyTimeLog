@@ -1,12 +1,13 @@
-import 'package:animated_segmented_tab_control/animated_segmented_tab_control.dart';
-import 'package:dailytimelog/3_controller/2_onboarding/onboarding_controller.dart';
 import 'package:dailytimelog/3_controller/5_statistics/statistics_controller.dart';
 import 'package:dailytimelog/4_utils/color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-
+import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../4_utils/theme.dart';
+import '../../5_components/custom_button.dart';
 import '../../5_components/custom_spacers.dart';
+import '../../5_components/custom_textfield.dart';
 
 class StatisticsView extends GetView<StatisticsController> {
   const StatisticsView({super.key});
@@ -31,56 +32,114 @@ class StatisticsView extends GetView<StatisticsController> {
         body:  SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Stack(
+            child: Column(
               children: [
                 const VSpaceWith(height: 20),
-                const SegmentedTabControl(
-                  tabTextColor: Colors.white,
-                  selectedTabTextColor:  Colors.black,
-                  indicatorPadding: EdgeInsets.all(4),
-                  squeezeIntensity: 2,
-                  // tabPadding: const EdgeInsets.symmetric(horizontal: 8),
-                  textStyle: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
-                  ),
-                  selectedTextStyle: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
-                  ),
-                  // Options for selection
-                  // All specified values will override the [SegmentedTabControl] setting
-                  tabs: [
-                    SegmentTab(
-                      label: 'Weekly',
-                      color: Colors.white,
-                      backgroundColor: appPrimaryColor,
+                Row(
+                  children: [
+                    SizedBox(
+                      width: (MediaQuery.of(context).size.width-150)/2,
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.showDatePicker(controller.startDateController);
+                        },
+                        child: Theme(
+                            data: ThemeData(disabledColor: Colors.blue, ),
+                            child: CustomTextfield(
+                              placeholder: 'Select Date',
+                              controller: controller.startDateController,
+                              onChangeCallback: controller.onChangeHoursCallback, isEnabled: false,)),
+                      ),
                     ),
-                    SegmentTab(
-                      label: 'Monthly',
-                      color: Colors.white,
-                      backgroundColor: appPrimaryColor,
+                    const Padding(
+                      padding: EdgeInsets.only(left: 5, right: 5),
+                      child: SizedBox(
+                        width: 15,
+                        child: Divider(
+                          height: 2,
+                          color: appPrimaryColor,
+                        ),
+                      ),
                     ),
-                    SegmentTab(
-                      label: 'Yearly',
-                      color: Colors.white,
-                      backgroundColor: appPrimaryColor,
+                    SizedBox(
+                      width: (MediaQuery.of(context).size.width-150)/2,
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.showDatePicker(controller.endDateController);
+                        },
+                        child: Theme(
+                            data: ThemeData(disabledColor: Colors.blue, ),
+                            child: CustomTextfield(
+                              placeholder: 'Select Date',
+                              controller: controller.endDateController,
+                              onChangeCallback: controller.onChangeHoursCallback, isEnabled: false,)),
+                      ),
                     ),
+                    const SizedBox(width: 5),
+                    Expanded(
+                      child: CustomButton(
+                          title: 'Filter',
+                          onPressed: () {
+                            controller.initData();
+                          }),
+                    )
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 70),
-                  child: TabBarView(
-                    physics: const BouncingScrollPhysics(),
-                    children: [
-                      weeklyView(),
-                      monthlyView(),
-                      yearlyView(),
-                    ],
-                  ),
-                ),
+                const VSpaceWith(height: 20),
+                GetBuilder(
+                    init: controller,
+                    id: 'graph_type_item',
+                    builder: (_) {
+                      return
+                        SizedBox(
+                          width:double.infinity,
+                          child: CupertinoSegmentedControl(
+                            padding: EdgeInsets.zero,
+                            children: const <int, Widget>{
+                              0: Padding(
+                                  padding:  EdgeInsets.zero,
+                                  child: Text('Weekly',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 19,
+                                        fontFamily: 'Odin Rounded',
+                                        fontWeight: FontWeight.w600,
+                                      ))),
+                              1: Padding(
+                                  padding: EdgeInsets.all(7.0),
+                                  child: Text('Monthly',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 19,
+                                        fontFamily: 'Odin Rounded',
+                                        fontWeight: FontWeight.w600,
+                                      ))),
+                              2: Padding(
+                                  padding: EdgeInsets.all(7.0),
+                                  child: Text('Yearly',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 19,
+                                        fontFamily: 'Odin Rounded',
+                                        fontWeight: FontWeight.w600,
+                                      ))),
+                            },
+                            onValueChanged: (value) {
+                              controller.updateType(value);
+                            },
+                            selectedColor: appPrimaryColor,
+                            unselectedColor: CupertinoColors.systemGrey5,
+                            borderColor: appPrimaryColor,
+                            pressedColor: appPrimaryColor,
+                            groupValue: controller.selectedTypePosition,
+                          ),
+                        );
+
+                    }),
+
+                const VSpaceWith(height: 10),
+                Expanded(child: graphSection()),
+
               ],
             ),
           ),
@@ -89,53 +148,50 @@ class StatisticsView extends GetView<StatisticsController> {
     );
   }
 
-  Widget weeklyView() {
-    return Column(
-      children: [
-        Text(
-          'weekly data here',
-          style: textStyleDefault(),
-        ),
-
-        Image.asset('assets/barchart.png', height: 200, fit: BoxFit.fitHeight,),
-
-        const VSpaceWith(height: 20),
-
-        Image.asset('assets/piechart.jpg'),
-      ],
-    );
+  Widget graphSection() {
+    return
+      GetBuilder(
+        init: controller,
+        id: 'graph_item',
+        builder: (_)
+    {
+      return
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              SfCartesianChart(
+                zoomPanBehavior: ZoomPanBehavior(enableDoubleTapZooming: true, enablePinching: true, enableSelectionZooming: true),
+                plotAreaBorderWidth: 0,
+                primaryXAxis: const CategoryAxis(
+                    majorGridLines: MajorGridLines(width: 0),
+                    labelIntersectAction: AxisLabelIntersectAction.wrap,
+                    crossesAt: 0, //_crossAt,
+                    placeLabelsNearAxisLine: true
+                ),
+                primaryYAxis: NumericAxis(
+                    axisLine: AxisLine(width: 0),
+                    minimum: 0,
+                    maximum: controller.maxValueOfBarchart,
+                    majorTickLines: MajorTickLines(size: 0)),
+                series: controller.getSeries(),
+                tooltipBehavior: TooltipBehavior(
+                    enable: true, header: '', canShowMarker: false),
+              ),
+              const VSpaceWith(height: 20),
+              SfCircularChart(
+                legend: const Legend(
+                    isVisible: true,
+                    overflowMode: LegendItemOverflowMode.wrap
+                ),
+                series: controller.getDefaultDoughnutSeries(),
+                tooltipBehavior: TooltipBehavior(
+                    enable: true, format: 'point.x : point.y%'),
+              ),
+            ],
+          ),
+        );
+    });
   }
-  Widget monthlyView() {
-    return Column(
-      children: [
-         Text(
-          'monthly data here',
-           style: textStyleDefault(),
-        ),
 
-        Image.asset('assets/barchart.png'),
-
-        const VSpaceWith(height: 20),
-
-        Image.asset('assets/piechart.jpg'),
-      ],
-    );
-  }
-  Widget yearlyView() {
-    return Column(
-      children: [
-        Text(
-          'yearly data here',
-          style: textStyleDefault(),
-        ),
-
-        Image.asset('assets/barchart.png'),
-
-        const VSpaceWith(height: 20),
-
-        Image.asset('assets/piechart.jpg'),
-      ],
-    );
-  }
 
 }
