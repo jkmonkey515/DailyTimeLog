@@ -246,15 +246,16 @@ class StatisticsController extends GetxController {
         barChartItems.add(onePointData);
       }
     }
-
-    for (var oneItem in barChartItems) {
-      double oneItmPercent =((oneItem.y!/totalHours)*100 * 100).round() / 100 ;
-      ChartSampleData onePointData = ChartSampleData(
-          x: oneItem.x,
-          y: oneItmPercent,
-          text: "$oneItmPercent%"
-      );
-      pieChartItems.add(onePointData);
+    if(barChartItems.isNotEmpty){
+      for (var oneItem in barChartItems) {
+        double oneItmPercent =((oneItem.y!/totalHours)*100 * 100).round() / 100 ;
+        ChartSampleData onePointData = ChartSampleData(
+            x: oneItem.x,
+            y: oneItmPercent,
+            text: "$oneItmPercent%"
+        );
+        pieChartItems.add(onePointData);
+      }
     }
     update(['graph_item'], true);
   }
