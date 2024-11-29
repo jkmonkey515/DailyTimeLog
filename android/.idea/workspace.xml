@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a3aa52-c015-4d53-bcda-afa52e8f03a7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../lib/4_utils/iap/dialog_util.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/4_utils/iap/loading_dialog.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/4_utils/iap/package_plan.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/4_utils/iap/subscription_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/other.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dailytimelog_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dailytimelog_android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../assets/logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Flutter/Flutter.podspec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Flutter/Generated.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Flutter/flutter_export_environment.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/2_view/4_loghours/loghours_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/4_loghours/loghours_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/2_view/5_statistics/statistics_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/5_statistics/statistics_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/2_view/6_profile/profile_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/6_profile/profile_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/2_view/7_settings/profeatures_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/7_settings/profeatures_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/2_view/7_settings/settings_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/7_settings/settings_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/3_controller/4_loghours/loghours_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/3_controller/4_loghours/loghours_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/3_controller/5_statistics/statistics_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/3_controller/5_statistics/statistics_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/3_controller/7_settings/profeatures_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/3_controller/7_settings/profeatures_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/3_controller/7_settings/settings_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/3_controller/7_settings/settings_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/4_utils/constats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/4_utils/constats.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +54,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/bright/.android/avd/Medium_Phone.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=E:\programs\.android\.android\avd\Pixel_7_Pro_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -31,9 +63,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2p4BEGVw7ZxF7QzfZ3e1o2qsQqz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,15 +73,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Android App.app.executor": "Run",
+    "Gradle.Upgrade Gradle wrapper.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "ios__build__version",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/bright/Documents/android_projects/DailyTimeLog/android",
+    "last_opened_file_path": "F:/github/DailyTimeLog",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>

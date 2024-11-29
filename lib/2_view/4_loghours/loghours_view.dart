@@ -101,8 +101,16 @@ class LoghoursView extends GetView<LoghoursController> {
                       ),
 
                       child: Theme(
-                        data: Theme.of(context).copyWith(brightness: Brightness.light),
+                        data: Theme.of(context).copyWith(
+                            brightness: Brightness.light,
+                          canvasColor: Colors.white,
+                         // splashColor: Colors.transparent,    // <- Here
+                          // highlightColor: Colors.transparent, // <- Here
+                          // hoverColor: Colors.transparent,     // <- Here
+                        ),
+
                         child : DropdownButton(
+                          underline: const SizedBox(),
                           value: controller.selectedCategory,
                           icon: null,
                           items: controller.categories.map((String item) {
@@ -114,7 +122,7 @@ class LoghoursView extends GetView<LoghoursController> {
                                 color: Colors.transparent,
                                 child: Text(
                                   item,
-                                  style: TextStyle(color: Colors.black),
+                                  style: const TextStyle(color: Colors.black),
                                 ),
                               ) : Text(item),
                             );

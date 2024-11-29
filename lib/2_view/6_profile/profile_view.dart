@@ -65,18 +65,18 @@ class ProfileView extends GetView<ProfileController> {
                             ),
               )),
 
-            GestureDetector(
-              onTap: () {
-
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '+ Set reminder',
-                  style: textStyleDefault(),
-                ),
-              ),
-            ),
+            // GestureDetector(
+            //   onTap: () {
+            //
+            //   },
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(8.0),
+            //     child: Text(
+            //       '+ Set reminder',
+            //       style: textStyleDefault(),
+            //     ),
+            //   ),
+            // ),
 
             const Spacer(),
             Obx(() =>

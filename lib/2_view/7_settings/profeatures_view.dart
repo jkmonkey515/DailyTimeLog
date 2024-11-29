@@ -73,6 +73,7 @@ class ProfeaturesView extends GetView<ProfeaturesController> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              VSpaceWith(height: 10),
               Text(
                 '1. Data export',
                 textAlign: TextAlign.left,
@@ -97,7 +98,7 @@ class ProfeaturesView extends GetView<ProfeaturesController> {
                 ),
               ),
 
-              VSpaceWith(height: 10),
+              VSpaceWith(height: 20),
               Text(
                 '2. Categories',
                 textAlign: TextAlign.left,
@@ -122,28 +123,28 @@ class ProfeaturesView extends GetView<ProfeaturesController> {
               ),
 
               VSpaceWith(height: 10),
-              Text(
-                '3. Offline sync',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Color(0xFF171717),
-                  fontSize: 20,
-                  fontFamily: 'Odin Rounded',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                ),
-              ),
-              Text(
-                '   - Toggle to manage offline functionality',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Color(0xFF171717),
-                  fontSize: 14,
-                  fontFamily: 'Odin Rounded',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                ),
-              ),
+              // Text(
+              //   '3. Offline sync',
+              //   textAlign: TextAlign.left,
+              //   style: TextStyle(
+              //     color: Color(0xFF171717),
+              //     fontSize: 20,
+              //     fontFamily: 'Odin Rounded',
+              //     fontWeight: FontWeight.w400,
+              //     height: 0,
+              //   ),
+              // ),
+              // Text(
+              //   '   - Toggle to manage offline functionality',
+              //   textAlign: TextAlign.left,
+              //   style: TextStyle(
+              //     color: Color(0xFF171717),
+              //     fontSize: 14,
+              //     fontFamily: 'Odin Rounded',
+              //     fontWeight: FontWeight.w400,
+              //     height: 0,
+              //   ),
+              // ),
             ],
           )
         ],

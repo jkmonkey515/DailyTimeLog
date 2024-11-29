@@ -172,11 +172,12 @@ class StatisticsController extends GetxController {
 
       // Format the output
       var dateFormat = DateFormat('yyyy-MM-dd');
+      var dateFormat1 = DateFormat('MM/dd');
       for (var week in weeks) {
         String query="";
         String weekTitle = "";
         if(week.isNotEmpty){
-          weekTitle="${dateFormat.format(week[0])}~${dateFormat.format(week[week.length-1])}";
+          weekTitle="${dateFormat1.format(week[0])}~${dateFormat1.format(week[week.length-1])}";
         }
         for (var day in week) {
           if(query.isNotEmpty){
@@ -248,7 +249,10 @@ class StatisticsController extends GetxController {
     }
     if(barChartItems.isNotEmpty){
       for (var oneItem in barChartItems) {
-        double oneItmPercent =((oneItem.y!/totalHours)*100 * 100).round() / 100 ;
+        double oneItmPercent = 0;
+        if(totalHours > 0){
+          oneItmPercent =((oneItem.y!/totalHours)*100 * 100).round() / 100 ;
+        }
         ChartSampleData onePointData = ChartSampleData(
             x: oneItem.x,
             y: oneItmPercent,

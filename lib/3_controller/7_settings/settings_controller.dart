@@ -25,24 +25,18 @@ class SettingsController extends GetxController {
   var isPasswordVisible = false.obs;
 
   TextEditingController txtNewPassword = TextEditingController();
-  var isNewPasswordVisible = false.obs;
+  var purchaseStatus = 0.obs;
 
   @override
   void onInit() {
     super.onInit();
-
+    var isProUser = cache.read("ispurchase")??0;
+    updatePurchaseStatus(isProUser);
   }
 
-  void updatePasswordVisible() {
-    isPasswordVisible.value = !isPasswordVisible.value;
-  }
 
-  void updateConfirmVisible() {
-    isNewPasswordVisible.value = !isNewPasswordVisible.value;
-  }
-
-  doChangePassword() {
-
+  void updatePurchaseStatus(int isProUser) {
+    purchaseStatus.value = isProUser;
   }
 
   gotoNextView(String menuTitle) {
@@ -96,7 +90,7 @@ class SettingsController extends GetxController {
     List<LogModel> logs = await dbHelper.getAllLogs();
     List<CategoryModel> categories = await dbHelper.getCategories();
     List<List<String>> data = [];
-    List<String> oneRow = ["Date", "Category", "Hours"];
+    List<String> oneRow = ["Date", "Activity Type", "Total Hours"];
     data.add(oneRow);
     for(var i=0; i<logs.length; i++){
       String categoryName = "";
@@ -126,15 +120,15 @@ class SettingsController extends GetxController {
     // Add a grid header row.
     final PdfGridRow headerRow = grid.headers.add(1)[0];
     headerRow.cells[0].value = 'Date';
-    headerRow.cells[1].value = 'Category';
-    headerRow.cells[2].value = 'Hours';
+    headerRow.cells[1].value = 'Activity Type';
+    headerRow.cells[2].value = 'Total Hours';
     // Set header font.
     headerRow.style.font =
         PdfStandardFont(PdfFontFamily.helvetica, 10, style: PdfFontStyle.bold);
     List<LogModel> logs = await dbHelper.getAllLogs();
     List<CategoryModel> categories = await dbHelper.getCategories();
     List<List<String>> data = [];
-    List<String> oneRow = ["Date", "Category", "Hours"];
+    List<String> oneRow = ["Date", "Activity Type", "Total Hours"];
     data.add(oneRow);
     for(var i=0; i<logs.length; i++){
       String categoryName = "";
@@ -165,11 +159,14 @@ class SettingsController extends GetxController {
   }
 
   Future<void> onShare(String filepath, String title) async {
-    //ShareExtend.share(filepath, "job zip file");
     final result = await Share.shareXFiles([XFile(filepath)], text: title);
 
     if (result.status == ShareResultStatus.success) {
-      print('Thank you for sharing the picture!');
+      print('Thank you for sharing the file!');
     }
+  }
+
+  void gotoPurchaseScreen() {
+    Get.toNamed(RouteName.profeaturesView);
   }
 }

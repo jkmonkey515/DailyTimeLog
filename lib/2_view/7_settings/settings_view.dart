@@ -36,7 +36,11 @@ class SettingsView extends GetView<SettingsController> {
             menuItem('Profile'),
 
             const VSpaceWith(height: 20),
-            menuItem('Export Data'),
+            Obx(() =>
+              Visibility(
+              visible: controller.purchaseStatus.value==0?false: true,
+              child:  menuItem('Export Data')
+              )),
 
             const VSpaceWith(height: 20),
             menuItem('Change Password'),
@@ -46,12 +50,16 @@ class SettingsView extends GetView<SettingsController> {
 
             // profeatureView(),
             const VSpaceWith(height: 20),
-            // CustomButton(
-            //     title: 'Upgrade',
-            //     onPressed: () {
-            //       controller.doChangePassword();
-            //     }),
-            // const VSpaceWith(height: 30),
+            Obx(() =>
+              Visibility(
+              visible: controller.purchaseStatus.value==1?false: true,
+                      child: CustomButton(
+                          title: 'Upgrade',
+                          onPressed: () {
+                            controller.gotoPurchaseScreen();
+                          })
+              )),
+            const VSpaceWith(height: 30),
           ],
         ),
       ),
@@ -91,103 +99,4 @@ class SettingsView extends GetView<SettingsController> {
     );
   }
 
-  Widget profeatureView() {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            'Pro:',
-            style: TextStyle(
-              color: appPrimaryColor,
-              fontSize: 24,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-
-          HSpaceWith(width: 10),
-
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '1. Data export',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Color(0xFF171717),
-                  fontSize: 20,
-                  fontFamily: 'Odin Rounded',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                ),
-              ),
-
-              Text(
-                '   - Export to CSV or PDF',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Color(0xFF171717),
-                  fontSize: 14,
-                  fontFamily: 'Odin Rounded',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                ),
-              ),
-
-              VSpaceWith(height: 10),
-              Text(
-                '2. Categories',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Color(0xFF171717),
-                  fontSize: 20,
-                  fontFamily: 'Odin Rounded',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                ),
-              ),
-              Text(
-                '   - Edit existing categories or add new ones',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Color(0xFF171717),
-                  fontSize: 14,
-                  fontFamily: 'Odin Rounded',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                ),
-              ),
-
-              VSpaceWith(height: 10),
-              Text(
-                '3. Offline sync',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Color(0xFF171717),
-                  fontSize: 20,
-                  fontFamily: 'Odin Rounded',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                ),
-              ),
-              Text(
-                '   - Toggle to manage offline functionality',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Color(0xFF171717),
-                  fontSize: 14,
-                  fontFamily: 'Odin Rounded',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
 }

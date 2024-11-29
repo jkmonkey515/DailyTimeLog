@@ -1,3 +1,4 @@
+import 'package:dailytimelog/3_controller/5_statistics/statistics_controller.dart';
 import 'package:dailytimelog/6_models/category_model.dart';
 import 'package:dailytimelog/6_models/log_model.dart';
 import 'package:flutter/cupertino.dart';
@@ -73,6 +74,13 @@ class LoghoursController extends GetxController {
           selectedCategory="";
           txtHours.text="";
           update(['category_item'], true);
+
+          bool isStatisticsController = Get.isRegistered<StatisticsController>();
+          if(isStatisticsController){
+            StatisticsController statisticsController = Get.find();
+            statisticsController.initData();
+          }
+
           Constants.showInfoDialog("Success", "Log data saved successfully");
         }
       }
