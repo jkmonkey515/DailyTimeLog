@@ -28,3 +28,4 @@ doc/api/
 /.idea
 /.idea/libraries
 /android/.idea
+android/app/release/app-release.aab

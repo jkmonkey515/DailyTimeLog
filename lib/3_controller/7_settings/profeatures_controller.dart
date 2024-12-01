@@ -10,6 +10,7 @@ class ProfeaturesController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    restoreIap();
     handleIAp();
   }
   handleIAp(){
@@ -22,6 +23,7 @@ class ProfeaturesController extends GetxController {
           Constants.showToastMessage("Some error has been happened");
         } else if (purchase.status == PurchaseStatus.restored) {
           // Restore purchases
+          processSuccessIap();
           Constants.showToastMessage("restored purchase");
         }
       }
@@ -33,9 +35,10 @@ class ProfeaturesController extends GetxController {
   void tryIap() async{
     bool available = await iap.isAvailable();
     if (available) {
-      const Set<String> productIds = {'your_product_id1', 'your_product_id2'};
+      const Set<String> productIds = {'profeature1'};
       final ProductDetailsResponse response = await iap.queryProductDetails(productIds);
-
+      print(response.notFoundIDs);
+      //print(response.productIds);
       if (response.notFoundIDs.isEmpty) {
         List<ProductDetails> products = response.productDetails;
         final ProductDetails product = products[0];
