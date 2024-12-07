@@ -25,6 +25,7 @@ class DatabaseHelper {
   static const tb_category = 'tb_category';
   //static const  category_id = "category_id";
   static const  category_name = "category_name";
+  static const  category_color = "category_color";
   static const  is_default = "is_default";
   static const  is_active = "is_active";
   //static const  created_at = "created_at";
@@ -70,6 +71,7 @@ class DatabaseHelper {
           CREATE TABLE $tb_category (
             $category_id INTEGER PRIMARY KEY,
             $category_name TEXT,
+            $category_color TEXT,
             $is_default INTEGER,
             $is_active INTEGER,
             $created_at TEXT,
@@ -142,6 +144,7 @@ class DatabaseHelper {
       CategoryModel categoryModel = CategoryModel(
           category_id: maps[i][category_id],
           category_name: maps[i][category_name],
+          category_color: maps[i][category_color],
           is_default: maps[i][is_default],
           is_active: maps[i][is_active],
           created_at: maps[i][created_at],
@@ -205,6 +208,7 @@ class DatabaseHelper {
     if(categoryModel.category_id==-1){
       Map<String, dynamic> row = {
         DatabaseHelper.category_name : categoryModel.category_name,
+        DatabaseHelper.category_color : categoryModel.category_color,
         DatabaseHelper.is_default : categoryModel.is_default,
         DatabaseHelper.is_active : categoryModel.is_active,
         DatabaseHelper.created_at : categoryModel.created_at,
@@ -215,6 +219,7 @@ class DatabaseHelper {
     }else{
       Map<String, dynamic> row = {
         DatabaseHelper.category_name : categoryModel.category_name,
+        DatabaseHelper.category_color : categoryModel.category_color,
         DatabaseHelper.is_default : categoryModel.is_default,
         DatabaseHelper.is_active : categoryModel.is_active,
         DatabaseHelper.created_at : categoryModel.created_at,

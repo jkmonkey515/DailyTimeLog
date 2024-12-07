@@ -1,3 +1,4 @@
+import 'package:dailytimelog/3_controller/5_statistics/statistics_controller.dart';
 import 'package:dailytimelog/3_controller/7_settings/settings_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -82,6 +83,12 @@ class ProfeaturesController extends GetxController {
     if(isSettingsController){
       SettingsController settingsController = Get.find();
       settingsController.updatePurchaseStatus(1);
+    }
+
+    bool isStatisticsController = Get.isRegistered<StatisticsController>();
+    if(isStatisticsController){
+      StatisticsController statisticsController = Get.find();
+      statisticsController.updatePurchaseStatus(1);
     }
     Get.back();
   }

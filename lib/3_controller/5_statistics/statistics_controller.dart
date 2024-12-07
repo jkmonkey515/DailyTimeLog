@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:dailytimelog/6_models/log_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -12,6 +13,7 @@ as picker;
 
 import '../../4_utils/constats.dart';
 import '../../4_utils/database_helper.dart';
+import '../../4_utils/route.dart';
 
 class StatisticsController extends GetxController {
   final cache = GetStorage();
@@ -22,6 +24,7 @@ class StatisticsController extends GetxController {
   List<ChartSampleData> barChartItems = [];
   List<ChartSampleData> pieChartItems = [];
   double maxValueOfBarchart=50;
+  var purchaseStatus = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -29,7 +32,12 @@ class StatisticsController extends GetxController {
     var prevMonth =  DateTime(date.year, date.month - 1, date.day);
     startDateController.text =Constants.getFormatedDate(prevMonth);
     endDateController.text =Constants.getFormatedDate(date);
+    var isProUser = cache.read("ispurchase")??0;
+    updatePurchaseStatus(isProUser);
     initData();
+  }
+  void updatePurchaseStatus(int isProUser) {
+    purchaseStatus.value = isProUser;
   }
 
   List<CartesianSeries<ChartSampleData, String>> getSeries() {
@@ -262,5 +270,37 @@ class StatisticsController extends GetxController {
       }
     }
     update(['graph_item'], true);
+  }
+
+  void showDataWithCustomRange() {
+    if(purchaseStatus.value==1){
+
+    }else{
+      showPurchaseDialog();
+    }
+  }
+
+  void showPurchaseDialog() {
+    showDialog(
+        context: Get.context!,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: const Text("This is a pro feature"),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Constants.dismissDialog();
+                    Get.toNamed(RouteName.profeaturesView);
+                  },
+                  child: const Text('Upgrade')),
+              TextButton(
+                onPressed: () {
+                  Constants.dismissDialog();
+                },
+                child: const Text('Close'),
+              )
+            ],
+          );
+        });
   }
 }

@@ -36,11 +36,7 @@ class SettingsView extends GetView<SettingsController> {
             menuItem('Profile'),
 
             const VSpaceWith(height: 20),
-            Obx(() =>
-              Visibility(
-              visible: controller.purchaseStatus.value==0?false: true,
-              child:  menuItem('Export Data')
-              )),
+            menuItem('Export Data'),
 
             const VSpaceWith(height: 20),
             menuItem('Change Password'),

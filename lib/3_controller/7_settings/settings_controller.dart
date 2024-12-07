@@ -41,7 +41,11 @@ class SettingsController extends GetxController {
 
   gotoNextView(String menuTitle) {
     if(menuTitle.contains('Export')) {
-      showExportOption();
+      if(purchaseStatus.value==0){
+        showPurchaseDialog();
+      }else{
+        showExportOption();
+      }
     }
     if(menuTitle.contains('Password')) {
       Get.toNamed(RouteName.changePasswordView);
@@ -168,5 +172,29 @@ class SettingsController extends GetxController {
 
   void gotoPurchaseScreen() {
     Get.toNamed(RouteName.profeaturesView);
+  }
+
+  void showPurchaseDialog() {
+    showDialog(
+        context: Get.context!,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: const Text("This is a pro feature"),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Constants.dismissDialog();
+                    Get.toNamed(RouteName.profeaturesView);
+                  },
+                  child: const Text('Upgrade')),
+              TextButton(
+                onPressed: () {
+                  Constants.dismissDialog();
+                },
+                child: const Text('Close'),
+              )
+            ],
+          );
+        });
   }
 }

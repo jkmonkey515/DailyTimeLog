@@ -22,39 +22,58 @@ class SplashController extends GetxController {
   void initData() async{
     List<CategoryModel> categoryModel = await dbHelper.getCategories();
     if(categoryModel.isEmpty){
-      CategoryModel categoryModel = CategoryModel(
-          category_id: -1,
-          category_name: "Collage days",
-          is_default: 1,
-          is_active: 1,
-          created_at: Constants.getCurrentDateTime(),
-          updated_at: Constants.getCurrentDateTime());
-      dbHelper.saveCategory(categoryModel);
       CategoryModel categoryModel1 = CategoryModel(
           category_id: -1,
           category_name: "Skills practice",
+          category_color: "#4287f5",
           is_default: 1,
           is_active: 1,
           created_at: Constants.getCurrentDateTime(),
           updated_at: Constants.getCurrentDateTime());
       dbHelper.saveCategory(categoryModel1);
-      CategoryModel categoryModel2 = CategoryModel(
-          category_id: -1,
-          category_name: "Therapy",
-          is_default: 1,
-          is_active: 1,
-          created_at: Constants.getCurrentDateTime(),
-          updated_at: Constants.getCurrentDateTime());
-      dbHelper.saveCategory(categoryModel2);
       CategoryModel categoryModel3 = CategoryModel(
           category_id: -1,
           category_name: "Placement",
+          category_color: "#eb0c1e",
           is_default: 1,
           is_active: 1,
           created_at: Constants.getCurrentDateTime(),
           updated_at: Constants.getCurrentDateTime());
       dbHelper.saveCategory(categoryModel3);
+
+
+      CategoryModel categoryModel2 = CategoryModel(
+          category_id: -1,
+          category_name: "Therapy",
+          category_color: "#e30ceb",
+          is_default: 0,
+          is_active: 0,
+          created_at: Constants.getCurrentDateTime(),
+          updated_at: Constants.getCurrentDateTime());
+      dbHelper.saveCategory(categoryModel2);
+
+      CategoryModel categoryModel = CategoryModel(
+          category_id: -1,
+          category_name: "Collage days",
+          category_color: "#5a0ceb",
+          is_default:0,
+          is_active: 0,
+          created_at: Constants.getCurrentDateTime(),
+          updated_at: Constants.getCurrentDateTime());
+      dbHelper.saveCategory(categoryModel);
+
+      CategoryModel categoryModel4 = CategoryModel(
+          category_id: -1,
+          category_name: "CPD",
+          category_color: "#0cc9eb",
+          is_default: 0,
+          is_active: 0,
+          created_at: Constants.getCurrentDateTime(),
+          updated_at: Constants.getCurrentDateTime());
+      dbHelper.saveCategory(categoryModel4);
+
     }
+
     Future.delayed(const Duration(seconds: 1), () {
       gotoNextView();
     });

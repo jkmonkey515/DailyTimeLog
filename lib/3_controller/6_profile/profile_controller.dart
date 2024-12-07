@@ -1,4 +1,5 @@
 import 'package:dailytimelog/3_controller/4_loghours/loghours_controller.dart';
+import 'package:dailytimelog/4_utils/color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,8 +48,7 @@ class ProfileController extends GetxController {
                 style: textStyleDefault(),
               ),
               const Spacer(),
-              purchaseStatus.value==1?
-              editIconButton(i, categoryModel[i]):SizedBox(),
+              editIconButton(i, categoryModel[i]),
               //editButton(i)
             ],
           )
@@ -60,7 +60,11 @@ class ProfileController extends GetxController {
     return IconButton(
       icon: const Icon(Icons.edit_note),
       onPressed: () {
-        categoryInfoDialog(categoryModel);
+        if(purchaseStatus.value==1){
+          categoryInfoDialog(categoryModel);
+        }else{
+          showPurchaseDialog();
+        }
       },
     );
   }
@@ -85,20 +89,24 @@ class ProfileController extends GetxController {
     // Get.offNamed(RouteName.onboardingView);
   }
   void updateCheckbox(int position) async{
-    int newStatus = 0;
-    if(checkedValues[position].value==1){
-      newStatus = 0;
-    }else{
-      newStatus = 1;
-    }
-    checkedValues[position].value = newStatus;
-    categoryModel[position].is_active = newStatus;
-    await dbHelper.saveCategory(categoryModel[position]);
+    if(purchaseStatus.value==1){
+      int newStatus = 0;
+      if(checkedValues[position].value==1){
+        newStatus = 0;
+      }else{
+        newStatus = 1;
+      }
+      checkedValues[position].value = newStatus;
+      categoryModel[position].is_active = newStatus;
+      await dbHelper.saveCategory(categoryModel[position]);
 
-    bool isLogHoursController = Get.isRegistered<LoghoursController>();
-    if(isLogHoursController){
-      LoghoursController loghoursController = Get.find();
-      await loghoursController.getCategories();
+      bool isLogHoursController = Get.isRegistered<LoghoursController>();
+      if(isLogHoursController){
+        LoghoursController loghoursController = Get.find();
+        await loghoursController.getCategories();
+      }
+    }else{
+      showPurchaseDialog();
     }
   }
   gotoProfeatureView() {
@@ -140,6 +148,7 @@ class ProfileController extends GetxController {
                         categoryModel = CategoryModel(
                           category_id: -1,
                           category_name: categoryNameController.text,
+                          category_color: generateRandomHexColor(),
                           is_default: 0,
                           is_active: 1,
                           created_at: Constants.getCurrentDateTime(),
@@ -174,6 +183,30 @@ class ProfileController extends GetxController {
       await loghoursController.getCategories();
     }
     initData();
+  }
+
+  void showPurchaseDialog() {
+    showDialog(
+        context: Get.context!,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: const Text("This is a pro feature"),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Constants.dismissDialog();
+                    Get.toNamed(RouteName.profeaturesView);
+                  },
+                  child: const Text('Upgrade')),
+              TextButton(
+                onPressed: () {
+                    Constants.dismissDialog();
+                },
+                child: const Text('Close'),
+              )
+            ],
+          );
+        });
   }
 
 }

@@ -48,22 +48,22 @@ class ProfileView extends GetView<ProfileController> {
               }),
 
             const Divider(),
-            Obx(() =>
-              Visibility(
-                visible: controller.purchaseStatus.value==0?false: true,
-                child: GestureDetector(
-                  onTap: () {
-                    controller.categoryInfoDialog(null);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      '+ Add category',
-                      style: textStyleDefault(),
-                    ),
-                  ),
-                            ),
-              )),
+            GestureDetector(
+              onTap: () {
+                if(controller.purchaseStatus.value==1){
+                  controller.categoryInfoDialog(null);
+                }else{
+                  controller.showPurchaseDialog();
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  '+ Add category',
+                  style: textStyleDefault(),
+                ),
+              ),
+                        ),
 
             // GestureDetector(
             //   onTap: () {
