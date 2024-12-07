@@ -27,10 +27,19 @@ Color generateRandomColor() {
 
 String generateRandomHexColor() {
   final Random random = Random();
-  // Generate a random integer in the range 0x000000 to 0xFFFFFF
-  int randomColorValue = random.nextInt(0xFFFFFF + 1);
-  // Convert the integer to a hex color string and ensure it's padded with leading zeros if needed
-  return '#${randomColorValue.toRadixString(16).padLeft(6, '0')}';
+
+  // Generate a random hue (0 to 360 degrees)
+  double hue = random.nextDouble() * 360;
+
+  // Pastel colors have high value (brightness) and moderate saturation
+  double saturation = 0.5 + random.nextDouble() * 0.3; // Range: 0.5 to 0.8
+  double value = 0.8 + random.nextDouble() * 0.2; // Range: 0.8 to 1.0
+
+  // Convert HSV to RGB
+  int rgb = HSVColor.fromAHSV(1.0, hue, saturation, value).toColor().value;
+
+  // Convert RGB to hex string and return
+  return '#${rgb.toRadixString(16).padLeft(8, '0').substring(2)}';
 }
 
 Color hexToColor(String hexString) {

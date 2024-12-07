@@ -94,6 +94,9 @@ class StatisticsController extends GetxController {
 
   void updateType(int value) {
     selectedTypePosition = value;
+    refreshPage();
+  }
+  void refreshPage() {
     update(['graph_type_item'], true);
     initData();
   }

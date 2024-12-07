@@ -2,6 +2,7 @@ import 'package:dailytimelog/3_controller/4_loghours/loghours_controller.dart';
 import 'package:dailytimelog/5_components/custom_button.dart';
 import 'package:dailytimelog/5_components/custom_spacers.dart';
 import 'package:dailytimelog/5_components/custom_textfield.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
@@ -179,5 +180,7 @@ class LoghoursView extends GetView<LoghoursController> {
       style: textStyleDefault(),
     );
   }
+
+
 
 }

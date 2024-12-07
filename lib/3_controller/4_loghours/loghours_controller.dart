@@ -2,6 +2,7 @@ import 'package:dailytimelog/3_controller/5_statistics/statistics_controller.dar
 import 'package:dailytimelog/6_models/category_model.dart';
 import 'package:dailytimelog/6_models/log_model.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -54,34 +55,7 @@ class LoghoursController extends GetxController {
         if(enteredHours.isEmpty){
           Constants.showInfoDialog("Please enter hour", "", yesText: "Close");
         }else{
-          String date = getDbStyleDate(edtDate.text);
-          int selectedType = -1;
-          for(var i=0; i<categoryModels.length; i++){
-            if(categoryModels[i].category_name==selectedCategory){
-              selectedType = categoryModels[i].category_id;
-            }
-          }
-          await dbHelper.saveLog(
-              LogModel(
-                  log_id: -1,
-                  category_id: selectedType.toString(),
-                  log_date: date,
-                  log_hour: enteredHours.trim(),
-                  created_at: Constants.getCurrentDateTime()
-              )
-          );
-          edtDate.text="";
-          selectedCategory="";
-          txtHours.text="";
-          update(['category_item'], true);
-
-          bool isStatisticsController = Get.isRegistered<StatisticsController>();
-          if(isStatisticsController){
-            StatisticsController statisticsController = Get.find();
-            statisticsController.initData();
-          }
-
-          Constants.showInfoDialog("Hours logged!", "", isShowYes: true, yesText: "Close");
+          confirmSaveDialog();
         }
       }
     }
@@ -101,5 +75,56 @@ class LoghoursController extends GetxController {
 
   void refreshItem() {
     update(['category_item'], true);
+  }
+
+  void confirmSaveDialog(){
+    showDialog(
+        context: Get.context!,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: const Text("This can't be undone!"),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () async {
+                    Constants.dismissDialog();
+                    String date = getDbStyleDate(edtDate.text);
+                    int selectedType = -1;
+                    for(var i=0; i<categoryModels.length; i++){
+                      if(categoryModels[i].category_name==selectedCategory){
+                        selectedType = categoryModels[i].category_id;
+                      }
+                    }
+                    await dbHelper.saveLog(
+                        LogModel(
+                            log_id: -1,
+                            category_id: selectedType.toString(),
+                            log_date: date,
+                            log_hour: enteredHours.trim(),
+                            created_at: Constants.getCurrentDateTime()
+                        )
+                    );
+                    edtDate.text="";
+                    selectedCategory="";
+                    txtHours.text="";
+                    update(['category_item'], true);
+
+                    bool isStatisticsController = Get.isRegistered<StatisticsController>();
+                    if(isStatisticsController){
+                      StatisticsController statisticsController = Get.find();
+                      statisticsController.initData();
+                    }
+
+                    Constants.showInfoDialog("Hours logged!", "", isShowYes: true, yesText: "Close");
+                  },
+                  child: const Text('Save')),
+              TextButton(
+                onPressed: () {
+                  Constants.dismissDialog();
+                },
+                child: const Text('Cancel'),
+              )
+            ],
+          );
+        });
   }
 }

@@ -85,7 +85,12 @@ class StatisticsView extends GetView<StatisticsController> {
                                           ))),
                                 },
                                 onValueChanged: (value) {
-                                  controller.updateType(value);
+                                  if(value==3 && controller.purchaseStatus.value==0){
+                                    controller.refreshPage();
+                                    controller.showPurchaseDialog();
+                                  }else{
+                                    controller.updateType(value);
+                                  }
                                 },
                                 selectedColor: appPrimaryColor,
                                 unselectedColor: CupertinoColors.systemGrey5,
