@@ -127,6 +127,12 @@ class DatabaseHelper {
     });
   }
 
+  Future<List<Map<String, dynamic>>> filterStatistics(query) async{
+    Database? db = await instance.database;
+    final List<Map<String, dynamic>> maps = await db!.rawQuery(query);
+    return maps;
+  }
+
   Future<int> confirmCategoryNameExist(String categoryName) async{
     Database? db = await instance.database;
     List<Map<String, dynamic>> maps = await db!.rawQuery('SELECT * FROM $tb_category WHERE $category_name ="$categoryName"');
@@ -137,9 +143,9 @@ class DatabaseHelper {
     }
   }
 
-  Future<List<CategoryModel>> getCategories() async{
+  Future<List<CategoryModel>> getCategories({String subQuery=""}) async{
     Database? db = await instance.database;
-    final List<Map<String, dynamic>> maps = await db!.rawQuery('SELECT * FROM $tb_category  ORDER By $category_id' );
+    final List<Map<String, dynamic>> maps = await db!.rawQuery('SELECT * FROM $tb_category $subQuery ORDER By $category_id' );
     return List.generate(maps.length, (i) {
       CategoryModel categoryModel = CategoryModel(
           category_id: maps[i][category_id],
@@ -162,6 +168,9 @@ class DatabaseHelper {
 
   Future<void> deleteCategoryData (int categoryId) async{
     await delete(categoryId, tb_category, category_id);
+  }
+  Future<void> deleteCategoryRelatedLogs(int categoryId) async{
+    await delete(categoryId, tb_logs, category_id);
   }
 
 

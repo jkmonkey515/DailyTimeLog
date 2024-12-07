@@ -32,3 +32,13 @@ String generateRandomHexColor() {
   // Convert the integer to a hex color string and ensure it's padded with leading zeros if needed
   return '#${randomColorValue.toRadixString(16).padLeft(6, '0')}';
 }
+
+Color hexToColor(String hexString) {
+  // Add the # prefix if missing
+  if (!hexString.startsWith('#')) {
+    hexString = '#$hexString';
+  }
+
+  // Parse the color
+  return Color(int.parse(hexString.replaceFirst('#', '0xff')));
+}

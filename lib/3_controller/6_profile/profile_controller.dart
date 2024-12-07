@@ -45,7 +45,7 @@ class ProfileController extends GetxController {
               ),
               Text(
                 categoryModel[i].category_name,
-                style: textStyleDefault(),
+                style: TextStyle(color: hexToColor(categoryModel[i].category_color)),
               ),
               const Spacer(),
               editIconButton(i, categoryModel[i]),
@@ -115,6 +115,10 @@ class ProfileController extends GetxController {
 
   TextEditingController categoryNameController = TextEditingController();
   void categoryInfoDialog(CategoryModel? categoryModel) {
+    if(categoryModel==null && activityTypeWidgets.length>=8){
+      Constants.showToastMessage("You can not add more than 8 activity types");
+      return;
+    }
     String title = "Add new Category";
     if(categoryModel!= null) title = "Edit Category";
     showDialog(
@@ -122,18 +126,33 @@ class ProfileController extends GetxController {
         builder: (context) {
           return CupertinoAlertDialog(
             title: Text(title),
-            content: Card(
-              child: TextField(
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                controller: categoryNameController,
-                cursorColor: Colors.blue,
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
+            content: Column(
+              children: [
+                Card(
+                  color: Colors.white10,
+                  elevation: 0,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.number,
+                    controller: categoryNameController,
+                    cursorColor: Colors.blue,
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                    ),
+                  ),
                 ),
-              ),
+                categoryModel!= null?
+                TextButton(
+                    onPressed: () {
+                      int categoryId = -1;
+                      if(categoryModel!=null) categoryId = categoryModel!.category_id;
+                      deleteCategory(categoryId);
+                      Constants.dismissDialog();
+                    },
+                    child: const Text('Delete category and all it\'s data',maxLines: 2,)): const SizedBox()
+              ],
             ),
-            actions: <Widget>[
+            actions: [
               TextButton(
                   onPressed: () {
                     Constants.dismissDialog();
@@ -145,7 +164,7 @@ class ProfileController extends GetxController {
                     Constants.showInfoDialog("Causion!", "Category name can't be blank");
                   }else{
                     if(categoryModel == null){
-                        categoryModel = CategoryModel(
+                      categoryModel = CategoryModel(
                           category_id: -1,
                           category_name: categoryNameController.text,
                           category_color: generateRandomHexColor(),
@@ -165,6 +184,7 @@ class ProfileController extends GetxController {
                 child: const Text('Save'),
               )
             ],
+
           );
         });
     if(categoryModel==null){
@@ -207,6 +227,12 @@ class ProfileController extends GetxController {
             ],
           );
         });
+  }
+
+  void deleteCategory(int categoryId) async{
+    await dbHelper.deleteCategoryData(categoryId);
+    await dbHelper.deleteCategoryRelatedLogs(categoryId);
+    initData();
   }
 
 }

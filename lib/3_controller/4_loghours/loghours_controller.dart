@@ -46,13 +46,13 @@ class LoghoursController extends GetxController {
 
   doSaveAction() async{
     if(edtDate.text.isEmpty){
-      Constants.showInfoDialog("Causion", "Please select a date");
+      Constants.showInfoDialog("Please select a date","", yesText: "Close");
     }else{
       if(selectedCategory.isEmpty){
-        Constants.showInfoDialog("Causion", "Please select a category");
+        Constants.showInfoDialog("Please select a category", "", yesText: "Close");
       }else{
         if(enteredHours.isEmpty){
-          Constants.showInfoDialog("Causion", "Please enter hour");
+          Constants.showInfoDialog("Please enter hour", "", yesText: "Close");
         }else{
           String date = getDbStyleDate(edtDate.text);
           int selectedType = -1;
@@ -81,7 +81,7 @@ class LoghoursController extends GetxController {
             statisticsController.initData();
           }
 
-          Constants.showInfoDialog("Success", "Log data saved successfully");
+          Constants.showInfoDialog("Hours logged!", "", isShowYes: true, yesText: "Close");
         }
       }
     }
