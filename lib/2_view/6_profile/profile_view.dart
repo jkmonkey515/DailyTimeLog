@@ -16,7 +16,7 @@ class ProfileView extends GetView<ProfileController> {
       backgroundColor: colorBackground,
       appBar: AppBar(
         title: Text(
-          'Profile Setup',
+          'Activity Setup',
           textAlign: TextAlign.center,
           style: textStyleNavigationTitle(),
         ),
@@ -59,7 +59,7 @@ class ProfileView extends GetView<ProfileController> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  '+ Add category',
+                  '+ Add activity',
                   style: textStyleDefault(),
                 ),
               ),

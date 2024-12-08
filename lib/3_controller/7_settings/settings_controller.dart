@@ -51,7 +51,7 @@ class SettingsController extends GetxController {
       Get.toNamed(RouteName.changePasswordView);
     }
 
-    if(menuTitle.contains('Profile')) {
+    if(menuTitle.contains('Activities')) {
       Get.toNamed(RouteName.profileView);
     }
   }

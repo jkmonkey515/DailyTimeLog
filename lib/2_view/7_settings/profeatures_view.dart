@@ -100,7 +100,7 @@ class ProfeaturesView extends GetView<ProfeaturesController> {
 
               VSpaceWith(height: 20),
               Text(
-                '2. Categories',
+                '2. Activities',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color(0xFF171717),
@@ -111,7 +111,7 @@ class ProfeaturesView extends GetView<ProfeaturesController> {
                 ),
               ),
               Text(
-                '   - Edit existing categories or add new ones',
+                '   - Edit existing activities or add new ones',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color(0xFF171717),
@@ -122,29 +122,29 @@ class ProfeaturesView extends GetView<ProfeaturesController> {
                 ),
               ),
 
-              VSpaceWith(height: 10),
-              // Text(
-              //   '3. Offline sync',
-              //   textAlign: TextAlign.left,
-              //   style: TextStyle(
-              //     color: Color(0xFF171717),
-              //     fontSize: 20,
-              //     fontFamily: 'Odin Rounded',
-              //     fontWeight: FontWeight.w400,
-              //     height: 0,
-              //   ),
-              // ),
-              // Text(
-              //   '   - Toggle to manage offline functionality',
-              //   textAlign: TextAlign.left,
-              //   style: TextStyle(
-              //     color: Color(0xFF171717),
-              //     fontSize: 14,
-              //     fontFamily: 'Odin Rounded',
-              //     fontWeight: FontWeight.w400,
-              //     height: 0,
-              //   ),
-              // ),
+              VSpaceWith(height: 20),
+              Text(
+                '3. Calendar',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Color(0xFF171717),
+                  fontSize: 20,
+                  fontFamily: 'Odin Rounded',
+                  fontWeight: FontWeight.w400,
+                  height: 0,
+                ),
+              ),
+              Text(
+                '   - Customise calendar date range',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Color(0xFF171717),
+                  fontSize: 14,
+                  fontFamily: 'Odin Rounded',
+                  fontWeight: FontWeight.w400,
+                  height: 0,
+                ),
+              ),
             ],
           )
         ],

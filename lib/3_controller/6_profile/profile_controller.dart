@@ -119,8 +119,8 @@ class ProfileController extends GetxController {
       Constants.showToastMessage("You can not add more than 8 activity types");
       return;
     }
-    String title = "Add new Category";
-    if(categoryModel!= null) title = "Edit Category";
+    String title = "Add new activity";
+    if(categoryModel!= null) title = "Edit activity";
     showDialog(
         context: Get.context!,
         builder: (context) {

@@ -17,7 +17,8 @@ class SplashController extends GetxController {
   }
 
   gotoNextView() {
-    Get.offNamed(RouteName.onboardingView);
+   // Get.offNamed(RouteName.onboardingView);
+    Get.offNamed(RouteName.maintabView);
   }
 
   void initData() async{
@@ -55,7 +56,7 @@ class SplashController extends GetxController {
 
       CategoryModel categoryModel = CategoryModel(
           category_id: -1,
-          category_name: "Collage days",
+          category_name: "College days",
           category_color: generateRandomHexColor(),
           is_default:0,
           is_active: 0,

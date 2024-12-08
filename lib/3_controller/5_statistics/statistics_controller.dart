@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:dailytimelog/6_models/category_model.dart';
-import 'package:dailytimelog/6_models/log_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,6 +26,8 @@ class StatisticsController extends GetxController {
   List<ChartSampleData> pieChartItems = [];
   double maxValueOfBarchart=50;
   var purchaseStatus = 0.obs;
+  String graphTitle="";
+  int currentFilterIndex = 0;
   @override
   void onInit() {
     super.onInit();
@@ -93,6 +94,7 @@ class StatisticsController extends GetxController {
   }
 
   void updateType(int value) {
+    currentFilterIndex = 0;
     selectedTypePosition = value;
     refreshPage();
   }
@@ -174,12 +176,14 @@ class StatisticsController extends GetxController {
   }
 
   initData() async {
+    graphTitle="";
       barChartItems = [];
       pieChartItems = [];
       String query = "";
       if(selectedTypePosition==0){
         List<DateTime> dates = [];
         DateTime currentDate = DateTime.now();
+        currentDate = currentDate.subtract(Duration(days:-1* currentFilterIndex*7));
         DateTime startOfWeek = currentDate.subtract(Duration(days: currentDate.weekday - 1)); //(assuming the week starts on Monday)
         String subQuery = "";
         var dateFormat = DateFormat('yyyy-MM-dd');
@@ -188,19 +192,33 @@ class StatisticsController extends GetxController {
           dates.add(oneDate);
           if(subQuery.isNotEmpty) subQuery+=" OR ";
           subQuery+=" log_date ='${dateFormat.format(oneDate)}'";
+          if(i==0 || i==-6){
+            if(graphTitle.isNotEmpty){
+              graphTitle+="~";
+            }
+            var dateFormat1 = DateFormat('yyyy/MM/dd');
+            graphTitle+=dateFormat1.format(oneDate);
+          }
         }
         subQuery=" WHERE $subQuery";
         query = "SELECT category_id, SUM(log_hour) AS total_hour FROM tb_logs$subQuery GROUP BY category_id";
       }else if(selectedTypePosition==1){
         DateTime now = DateTime.now();
-        String currentMonthDate = now.year.toString()+"-"+now.month.toString();
+        now =  DateTime(
+            now.year,
+            now.month +currentFilterIndex,
+            now.day
+        );
+        String currentMonthDate = "${now.year}-${now.month}";
         String subQuery = " WHERE log_date LIKE '$currentMonthDate%'";
         query = "SELECT category_id, SUM(log_hour) AS total_hour FROM tb_logs$subQuery GROUP BY category_id";
+        graphTitle = currentMonthDate;
       }else if(selectedTypePosition==2){
         DateTime now = DateTime.now();
-        String currentYear = now.year.toString();
+        String currentYear = (now.year+currentFilterIndex).toString();
         String subQuery = " WHERE log_date LIKE '$currentYear%'";
         query = "SELECT category_id, SUM(log_hour) AS total_hour FROM tb_logs$subQuery GROUP BY category_id";
+        graphTitle = currentYear;
       }else if(selectedTypePosition==3){
         DateTime startDate = DateTime(int.parse(startDateController.text.split("/")[2]), int.parse(startDateController.text.split("/")[1]), int.parse(startDateController.text.split("/")[0])); // November 1, 2024
         DateTime endDate = DateTime(int.parse(endDateController.text.split("/")[2]), int.parse(endDateController.text.split("/")[1]), int.parse(endDateController.text.split("/")[0])); // November 1, 2024
@@ -216,6 +234,8 @@ class StatisticsController extends GetxController {
         }
         subQuery=" WHERE $subQuery";
         query = "SELECT category_id, SUM(log_hour) AS total_hour FROM tb_logs$subQuery GROUP BY category_id";
+
+        graphTitle= "${startDateController.text.replaceAll("-", "/")}~${endDateController.text.replaceAll("-", "/")}";
       }
       print(query);
       double totalHours = 0;
@@ -257,111 +277,6 @@ class StatisticsController extends GetxController {
       update(['graph_item'], true);
   }
 
-  // initData() async {
-  //   barChartItems = [];
-  //   pieChartItems = [];
-  //   DateTime startDate = DateTime(int.parse(startDateController.text.split("/")[2]), int.parse(startDateController.text.split("/")[1]), int.parse(startDateController.text.split("/")[0])); // November 1, 2024
-  //   DateTime endDate = DateTime(int.parse(endDateController.text.split("/")[2]), int.parse(endDateController.text.split("/")[1]), int.parse(endDateController.text.split("/")[0])); // November 1, 2024
-  //   double totalHours = 0;
-  //   if(selectedTypePosition==0){
-  //     maxValueOfBarchart = 50;
-  //     // Get the weeks between the dates
-  //     List<List<DateTime>> weeks = getWeeksBetweenDates(startDate, endDate);
-  //
-  //     // Format the output
-  //     var dateFormat = DateFormat('yyyy-MM-dd');
-  //     var dateFormat1 = DateFormat('MM/dd');
-  //     for (var week in weeks) {
-  //       String query="";
-  //       String weekTitle = "";
-  //       if(week.isNotEmpty){
-  //         weekTitle="${dateFormat1.format(week[0])}~${dateFormat1.format(week[week.length-1])}";
-  //       }
-  //       for (var day in week) {
-  //         if(query.isNotEmpty){
-  //           query+=" OR ";
-  //         }
-  //         query+="log_date='${dateFormat.format(day)}'";
-  //         //print(dateFormat.format(day));
-  //       }
-  //       query=" WHERE $query";
-  //       List<LogModel> filteredLogs = await dbHelper.filterLogs(query);
-  //       var oneWeekHours = 0.0;
-  //       for(var oneLog in filteredLogs){
-  //         if( double.tryParse(oneLog.log_hour) != null){
-  //           oneWeekHours+=double.parse(oneLog.log_hour);
-  //         }
-  //       }
-  //       totalHours+=oneWeekHours;
-  //       ChartSampleData onePointData = ChartSampleData(
-  //           x: weekTitle,
-  //           y: oneWeekHours,
-  //           pointColor: generateRandomColor()
-  //       );
-  //       barChartItems.add(onePointData);
-  //     }
-  //   }else if(selectedTypePosition==1){
-  //     maxValueOfBarchart = 200;
-  //     List<String> months = getMonthsBetweenDates(startDate, endDate);
-  //     for (var oneMonth in months) {
-  //       String monthTitle = oneMonth;
-  //       String query=" WHERE log_date LIKE '$oneMonth%'";
-  //
-  //       List<LogModel> filteredLogs = await dbHelper.filterLogs(query);
-  //       var oneMonthHours = 0.0;
-  //       for(var oneLog in filteredLogs){
-  //         if( double.tryParse(oneLog.log_hour) != null){
-  //           oneMonthHours+=double.parse(oneLog.log_hour);
-  //         }
-  //       }
-  //       ChartSampleData onePointData = ChartSampleData(
-  //           x: monthTitle,
-  //           y: oneMonthHours,
-  //           pointColor: generateRandomColor()
-  //       );
-  //       totalHours+=oneMonthHours;
-  //       barChartItems.add(onePointData);
-  //     }
-  //   }else if(selectedTypePosition==2){
-  //     maxValueOfBarchart = 2400;
-  //     List<String> years = getYearsBetweenDates(startDate, endDate);
-  //     for (var oneYear in years) {
-  //       String yearTitle = oneYear;
-  //       String query=" WHERE log_date LIKE '$oneYear%'";
-  //
-  //       List<LogModel> filteredLogs = await dbHelper.filterLogs(query);
-  //       var oneYearHours = 0.0;
-  //       for(var oneLog in filteredLogs){
-  //         if( double.tryParse(oneLog.log_hour) != null){
-  //           oneYearHours+=double.parse(oneLog.log_hour);
-  //         }
-  //       }
-  //       ChartSampleData onePointData = ChartSampleData(
-  //           x: yearTitle,
-  //           y: oneYearHours,
-  //           pointColor: generateRandomColor()
-  //       );
-  //       totalHours+=oneYearHours;
-  //       barChartItems.add(onePointData);
-  //     }
-  //   }
-  //   if(barChartItems.isNotEmpty){
-  //     for (var oneItem in barChartItems) {
-  //       double oneItmPercent = 0;
-  //       if(totalHours > 0){
-  //         oneItmPercent =((oneItem.y!/totalHours)*100 * 100).round() / 100 ;
-  //       }
-  //       ChartSampleData onePointData = ChartSampleData(
-  //           x: oneItem.x,
-  //           y: oneItmPercent,
-  //           text: "$oneItmPercent%"
-  //       );
-  //       pieChartItems.add(onePointData);
-  //     }
-  //   }
-  //   update(['graph_item'], true);
-  // }
-
   void showDataWithCustomRange() {
     if(purchaseStatus.value==1){
       initData();
@@ -392,5 +307,10 @@ class StatisticsController extends GetxController {
             ],
           );
         });
+  }
+
+  void newGraph(int i) {
+    currentFilterIndex+=i;
+    initData();
   }
 }

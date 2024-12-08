@@ -33,13 +33,13 @@ class SettingsView extends GetView<SettingsController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const VSpaceWith(height: 20),
-            menuItem('Profile'),
+            menuItem('Activities'),
 
             const VSpaceWith(height: 20),
             menuItem('Export Data'),
 
-            const VSpaceWith(height: 20),
-            menuItem('Change Password'),
+            // const VSpaceWith(height: 20),
+            // menuItem('Change Password'),
             const VSpaceWith(height: 30),
 
             const Spacer(),

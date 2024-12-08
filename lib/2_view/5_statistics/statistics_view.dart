@@ -102,6 +102,10 @@ class StatisticsView extends GetView<StatisticsController> {
                             const VSpaceWith(height: 10),
                             Visibility(
                               visible: controller.selectedTypePosition == 3? true: false,
+                              child: const VSpaceWith(height: 10),
+                            ),
+                            Visibility(
+                              visible: controller.selectedTypePosition == 3? true: false,
                               child: Row(
                                 children: [
                                   SizedBox(
@@ -179,6 +183,22 @@ class StatisticsView extends GetView<StatisticsController> {
         SingleChildScrollView(
           child: Column(
             children: [
+              Row(
+                children: [
+                  Visibility(visible: controller.selectedTypePosition==3? false: true, child: IconButton(onPressed: (){
+                    controller.newGraph(-1);
+                  }, icon: Icon(Icons.arrow_back_ios))),
+                  Expanded(child: Container()),
+                  Text(
+                    controller.graphTitle,
+                    style: TextStyle(color: Colors.black, fontSize: 15),
+                  ),
+                  Expanded(child: Container()),
+                  Visibility(visible: controller.selectedTypePosition==3? false: true, child: IconButton(onPressed: (){
+                    controller.newGraph(1);
+                  }, icon: Icon(Icons.arrow_forward_ios))),
+                ],
+              ),
               SizedBox(
                 //height: 300,
                 child: SfCartesianChart(
