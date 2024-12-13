@@ -32,6 +32,7 @@ class CustomTextfield extends StatelessWidget {
       child: TextField(
         controller: controller,
         enabled: isEnabled,
+        keyboardType: inputType,
         style: const TextStyle(
           fontSize: fontSize,
           color: Colors.black, // You can customize the text color as well

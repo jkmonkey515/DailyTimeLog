@@ -196,7 +196,7 @@ class StatisticsController extends GetxController {
             if(graphTitle.isNotEmpty){
               graphTitle+="~";
             }
-            var dateFormat1 = DateFormat('yyyy/MM/dd');
+            var dateFormat1 = DateFormat('dd/MM/yyyy');
             graphTitle+=dateFormat1.format(oneDate);
           }
         }
@@ -212,7 +212,7 @@ class StatisticsController extends GetxController {
         String currentMonthDate = "${now.year}-${now.month}";
         String subQuery = " WHERE log_date LIKE '$currentMonthDate%'";
         query = "SELECT category_id, SUM(log_hour) AS total_hour FROM tb_logs$subQuery GROUP BY category_id";
-        graphTitle = currentMonthDate;
+        graphTitle = "${now.month}/${now.year}";
       }else if(selectedTypePosition==2){
         DateTime now = DateTime.now();
         String currentYear = (now.year+currentFilterIndex).toString();

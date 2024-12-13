@@ -27,7 +27,7 @@ class SplashController extends GetxController {
       CategoryModel categoryModel1 = CategoryModel(
           category_id: -1,
           category_name: "Skills practice",
-          category_color: generateRandomHexColor(),
+          category_color: activityColors[0],
           is_default: 1,
           is_active: 1,
           created_at: Constants.getCurrentDateTime(),
@@ -36,7 +36,7 @@ class SplashController extends GetxController {
       CategoryModel categoryModel3 = CategoryModel(
           category_id: -1,
           category_name: "Placement",
-          category_color: generateRandomHexColor(),
+          category_color: activityColors[1],
           is_default: 1,
           is_active: 1,
           created_at: Constants.getCurrentDateTime(),
@@ -47,7 +47,7 @@ class SplashController extends GetxController {
       CategoryModel categoryModel2 = CategoryModel(
           category_id: -1,
           category_name: "Therapy",
-          category_color: generateRandomHexColor(),
+          category_color: activityColors[4],
           is_default: 0,
           is_active: 0,
           created_at: Constants.getCurrentDateTime(),
@@ -57,7 +57,7 @@ class SplashController extends GetxController {
       CategoryModel categoryModel = CategoryModel(
           category_id: -1,
           category_name: "College days",
-          category_color: generateRandomHexColor(),
+          category_color: activityColors[2],
           is_default:0,
           is_active: 0,
           created_at: Constants.getCurrentDateTime(),
@@ -67,7 +67,7 @@ class SplashController extends GetxController {
       CategoryModel categoryModel4 = CategoryModel(
           category_id: -1,
           category_name: "CPD",
-          category_color: generateRandomHexColor(),
+          category_color: activityColors[3],
           is_default: 0,
           is_active: 0,
           created_at: Constants.getCurrentDateTime(),

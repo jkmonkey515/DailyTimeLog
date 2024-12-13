@@ -12,7 +12,7 @@ const colorCream     = Color(0xFFFAF8F2);
 const colorDarkBlue  = Color(0xFF4D6596);
 
 const colorBackground  = Color(0xFFCFE3CF);
-
+const List<String> activityColors = ["#1B4C53","#0F7486","#998ad3","#F28589","#6C7394","#BE94E6","#ABDBC1","#DFE3BC"];
 Color generateRandomColor() {
   Random random = Random();
 

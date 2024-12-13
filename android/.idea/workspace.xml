@@ -12,16 +12,14 @@
     <list default="true" id="81a3aa52-c015-4d53-bcda-afa52e8f03a7" name="Changes" comment="">
       <change beforePath="E:/androidsdk/flutter/packages/flutter_tools/gradle/build.gradle.kts" beforeDir="false" afterPath="E:/androidsdk/flutter/packages/flutter_tools/gradle/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Flutter/Generated.xcconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/2_view/5_statistics/statistics_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/5_statistics/statistics_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/2_view/6_profile/profile_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/6_profile/profile_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/2_view/7_settings/profeatures_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/7_settings/profeatures_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/2_view/7_settings/settings_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/7_settings/settings_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/2_view/4_loghours/loghours_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/2_view/4_loghours/loghours_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/3_controller/1_splash/splash_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/3_controller/1_splash/splash_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/3_controller/5_statistics/statistics_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/3_controller/5_statistics/statistics_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/3_controller/6_profile/profile_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/3_controller/6_profile/profile_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/3_controller/7_settings/settings_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/3_controller/7_settings/settings_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/4_utils/color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/4_utils/color.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/5_components/custom_textfield.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/5_components/custom_textfield.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Android App.app.executor": "Debug",
+    "Android App.app.executor": "Run",
     "BundleExportedModule": "android.app",
     "ExportBundle.BundlePathForandroid.app": "F:\\github\\DailyTimeLog\\android\\app",
     "Gradle.Upgrade Gradle wrapper.executor": "Run",
@@ -68,7 +66,7 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "ios__build__version",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/github/DailyTimeLog",
+    "last_opened_file_path": "F:/github/DailyTimeLog/android",
     "show.migrate.to.gradle.popup": "false"
   },
   "keyToStringList": {

@@ -148,6 +148,7 @@ class LoghoursView extends GetView<LoghoursController> {
             CustomTextfield(
                 placeholder: 'Enter hours',
                 controller: controller.txtHours,
+                inputType: TextInputType.number,
                 onChangeCallback: controller.onChangeHoursCallback),
 
             const Spacer(),
