@@ -209,7 +209,9 @@ class StatisticsController extends GetxController {
             now.month +currentFilterIndex,
             now.day
         );
-        String currentMonthDate = "${now.year}-${now.month}";
+        String monthString = now.month.toString();
+        if(now.month<10) monthString="0"+monthString;
+        String currentMonthDate = "${now.year}-$monthString";
         String subQuery = " WHERE log_date LIKE '$currentMonthDate%'";
         query = "SELECT category_id, SUM(log_hour) AS total_hour FROM tb_logs$subQuery GROUP BY category_id";
         graphTitle = "${now.month}/${now.year}";

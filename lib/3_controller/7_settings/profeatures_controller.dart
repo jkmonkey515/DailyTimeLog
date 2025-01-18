@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dailytimelog/3_controller/5_statistics/statistics_controller.dart';
 import 'package:dailytimelog/3_controller/7_settings/settings_controller.dart';
 import 'package:get/get.dart';
@@ -36,7 +38,10 @@ class ProfeaturesController extends GetxController {
   void tryIap() async{
     bool available = await iap.isAvailable();
     if (available) {
-      const Set<String> productIds = {'profeature1'};
+      Set<String> productIds = {'profeature1'};
+      if(Platform.isIOS){
+        productIds = {'trainee.iap.profeature'};
+      }
       final ProductDetailsResponse response = await iap.queryProductDetails(productIds);
       print(response.notFoundIDs);
       //print(response.productIds);

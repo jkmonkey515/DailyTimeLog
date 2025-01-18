@@ -29,3 +29,5 @@ doc/api/
 /.idea/libraries
 /android/.idea
 android/app/release/app-release.aab
+ios/.DS_Store
+/ios/.symlinks
