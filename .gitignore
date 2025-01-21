@@ -31,3 +31,4 @@ doc/api/
 android/app/release/app-release.aab
 ios/.DS_Store
 /ios/.symlinks
+ios/DerivedData

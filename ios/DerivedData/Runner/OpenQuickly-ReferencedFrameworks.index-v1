@@ -2,35 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
+	<string>objc</string>
 	<string>Foundation</string>
 	<string>CoreTelephony</string>
-	<string>AppTrackingTransparency</string>
 	<string>EventKit</string>
-	<string>MediaPlayer</string>
+	<string>AppTrackingTransparency</string>
 	<string>AVFoundation</string>
 	<string>fluttertoast</string>
 	<string>QuartzCore</string>
 	<string>Speech</string>
 	<string>share</string>
-	<string>AddressBook</string>
+	<string>CoreMotion</string>
 	<string>permission</string>
 	<string>path</string>
 	<string>Contacts</string>
-	<string>CoreMotion</string>
+	<string>AddressBook</string>
 	<string>UIKit</string>
 	<string>Toast</string>
 	<string>sqflite</string>
 	<string>Flutter</string>
 	<string>CoreLocation</string>
 	<string>Photos</string>
-	<string>UserNotifications</string>
-	<string>Intents</string>
 	<string>XCTest</string>
+	<string>Intents</string>
+	<string>UserNotifications</string>
 	<string>in</string>
 	<string>StoreKit</string>
 	<string>CoreBluetooth</string>
 	<string>FlutterMacOS</string>
+	<string>MediaPlayer</string>
 	<string>sqlite3</string>
-	<string>objc</string>
 </array>
 </plist>
