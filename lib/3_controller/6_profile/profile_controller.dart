@@ -47,7 +47,8 @@ class ProfileController extends GetxController {
                 categoryModel[i].category_name,
                 style: TextStyle(color: hexToColor(categoryModel[i].category_color)),
               ),
-              const Spacer(),
+              //const Spacer(),
+              Expanded(child: Container()),
               editIconButton(i, categoryModel[i]),
               //editButton(i)
             ],

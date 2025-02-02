@@ -26,37 +26,39 @@ class SettingsView extends GetView<SettingsController> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body:  Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const VSpaceWith(height: 20),
-            menuItem('Activities'),
-
-            const VSpaceWith(height: 20),
-            menuItem('Export Data'),
-
-            // const VSpaceWith(height: 20),
-            // menuItem('Change Password'),
-            const VSpaceWith(height: 30),
-
-            const Spacer(),
-
-            // profeatureView(),
-            const VSpaceWith(height: 20),
-            Obx(() =>
-              Visibility(
-              visible: controller.purchaseStatus.value==1?false: true,
-                      child: CustomButton(
-                          title: 'Upgrade',
-                          onPressed: () {
-                            controller.gotoPurchaseScreen();
-                          })
-              )),
-            const VSpaceWith(height: 30),
-          ],
+      body:  SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const VSpaceWith(height: 20),
+              menuItem('Activities'),
+        
+              const VSpaceWith(height: 20),
+              menuItem('Export Data'),
+        
+              // const VSpaceWith(height: 20),
+              // menuItem('Change Password'),
+              const VSpaceWith(height: 50),
+        
+              //const Spacer(),
+        
+              // profeatureView(),
+              const VSpaceWith(height: 20),
+              Obx(() =>
+                Visibility(
+                visible: controller.purchaseStatus.value==1?false: true,
+                        child: CustomButton(
+                            title: 'Upgrade',
+                            onPressed: () {
+                              controller.gotoPurchaseScreen();
+                            })
+                )),
+              const VSpaceWith(height: 30),
+            ],
+          ),
         ),
       ),
     );

@@ -27,25 +27,27 @@ class ProfeaturesView extends GetView<ProfeaturesController> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body:  Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const VSpaceWith(height: 20),
-            profeatureView(),
-
-            const Spacer(),
-
-            const VSpaceWith(height: 20),
-            CustomButton(
-                title: 'Upgrade',
-                onPressed: () {
-                  controller.tryIap();
-                }),
-            const VSpaceWith(height: 30),
-          ],
+      body:  SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const VSpaceWith(height: 20),
+              profeatureView(),
+              const VSpaceWith(height: 40),
+              //const Spacer(),
+        
+              const VSpaceWith(height: 20),
+              CustomButton(
+                  title: 'Upgrade',
+                  onPressed: () {
+                    controller.tryIap();
+                  }),
+              const VSpaceWith(height: 30),
+            ],
+          ),
         ),
       ),
     );

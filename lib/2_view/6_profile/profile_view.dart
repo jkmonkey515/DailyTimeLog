@@ -25,73 +25,76 @@ class ProfileView extends GetView<ProfileController> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body:  Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const VSpaceWith(height: 20),
-            Text(
-              'Default activity type:',
-              style: textStyleDefault(),
-            ),
-            GetBuilder(
-              init: controller,
-              id: 'category_list',
-              builder: (_)
-              {
-                return
-                      Column(
-                        children: controller.activityTypeWidgets,
-                      );
-              }),
-
-            const Divider(),
-            GestureDetector(
-              onTap: () {
-                if(controller.purchaseStatus.value==1){
-                  controller.categoryInfoDialog(null);
-                }else{
-                  controller.showPurchaseDialog();
-                }
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '+ Add activity',
-                  style: textStyleDefault(),
-                ),
+      body:  SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const VSpaceWith(height: 20),
+              Text(
+                'Default activity type:',
+                style: textStyleDefault(),
               ),
-                        ),
-
-            // GestureDetector(
-            //   onTap: () {
-            //
-            //   },
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: Text(
-            //       '+ Set reminder',
-            //       style: textStyleDefault(),
-            //     ),
-            //   ),
-            // ),
-
-            const Spacer(),
-            Obx(() =>
-                Visibility(
-                  visible: controller.purchaseStatus.value==0?true: false,
-                  child: CustomButton(
-                      title: 'Upgrade',
-                      onPressed: () {
-                        controller.gotoProfeatureView();
-                      }),
-                )
-            ),
-            
-            const VSpaceWith(height: 30),
-          ],
+              GetBuilder(
+                init: controller,
+                id: 'category_list',
+                builder: (_)
+                {
+                  return
+                        Column(
+                          children: controller.activityTypeWidgets,
+                        );
+                }),
+        
+              const Divider(),
+              GestureDetector(
+                onTap: () {
+                  if(controller.purchaseStatus.value==1){
+                    controller.categoryInfoDialog(null);
+                  }else{
+                    controller.showPurchaseDialog();
+                  }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    '+ Add activity',
+                    style: textStyleDefault(),
+                  ),
+                ),
+                          ),
+        
+              // GestureDetector(
+              //   onTap: () {
+              //
+              //   },
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Text(
+              //       '+ Set reminder',
+              //       style: textStyleDefault(),
+              //     ),
+              //   ),
+              // ),
+        
+              //const Spacer(),
+              const SizedBox(height: 30,),
+              Obx(() =>
+                  Visibility(
+                    visible: controller.purchaseStatus.value==0?true: false,
+                    child: CustomButton(
+                        title: 'Upgrade',
+                        onPressed: () {
+                          controller.gotoProfeatureView();
+                        }),
+                  )
+              ),
+              
+              const VSpaceWith(height: 30),
+            ],
+          ),
         ),
       ),
     );

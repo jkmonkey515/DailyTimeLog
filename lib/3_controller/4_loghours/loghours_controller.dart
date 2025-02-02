@@ -55,7 +55,16 @@ class LoghoursController extends GetxController {
         if(enteredHours.isEmpty){
           Constants.showInfoDialog("Please enter hour", "", yesText: "Close");
         }else{
-          confirmSaveDialog();
+          try {
+            double d = double.parse(enteredHours);
+            if(d>24){
+              Constants.showInfoDialog("There are only 24 hours in a day!", "", yesText: "Close");
+            }else{
+              confirmSaveDialog();
+            }
+          } catch (e) {
+            Constants.showInfoDialog("Please enter valid number for hours field", "", yesText: "Close");
+          }
         }
       }
     }

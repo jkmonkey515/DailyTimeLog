@@ -194,7 +194,7 @@ class StatisticsController extends GetxController {
           subQuery+=" log_date ='${dateFormat.format(oneDate)}'";
           if(i==0 || i==-6){
             if(graphTitle.isNotEmpty){
-              graphTitle+="~";
+              graphTitle+="-";
             }
             var dateFormat1 = DateFormat('dd/MM/yyyy');
             graphTitle+=dateFormat1.format(oneDate);
@@ -237,7 +237,7 @@ class StatisticsController extends GetxController {
         subQuery=" WHERE $subQuery";
         query = "SELECT category_id, SUM(log_hour) AS total_hour FROM tb_logs$subQuery GROUP BY category_id";
 
-        graphTitle= "${startDateController.text.replaceAll("-", "/")}~${endDateController.text.replaceAll("-", "/")}";
+        graphTitle= "${startDateController.text.replaceAll("-", "/")}-${endDateController.text.replaceAll("-", "/")}";
       }
       print(query);
       double totalHours = 0;
