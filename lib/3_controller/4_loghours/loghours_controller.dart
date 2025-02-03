@@ -60,6 +60,7 @@ class LoghoursController extends GetxController {
             if(d>24){
               Constants.showInfoDialog("There are only 24 hours in a day!", "", yesText: "Close");
             }else{
+              FocusManager.instance.primaryFocus?.unfocus();
               confirmSaveDialog();
             }
           } catch (e) {
@@ -77,7 +78,7 @@ class LoghoursController extends GetxController {
     if(dateValue.length!=3){
       datestring = datetime;
     }else{
-      datestring = dateValue[2]+"-"+dateValue[1]+"-"+dateValue[0];
+      datestring = "${dateValue[2]}-${dateValue[1]}-${dateValue[0]}";
     }
     return datestring;
   }
