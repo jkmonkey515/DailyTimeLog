@@ -4,33 +4,33 @@
 <array>
 	<string>objc</string>
 	<string>Foundation</string>
-	<string>CoreTelephony</string>
-	<string>EventKit</string>
 	<string>AppTrackingTransparency</string>
+	<string>MediaPlayer</string>
+	<string>EventKit</string>
 	<string>AVFoundation</string>
-	<string>fluttertoast</string>
-	<string>QuartzCore</string>
 	<string>Speech</string>
+	<string>QuartzCore</string>
+	<string>fluttertoast</string>
 	<string>share</string>
+	<string>AddressBook</string>
 	<string>CoreMotion</string>
-	<string>permission</string>
 	<string>path</string>
 	<string>Contacts</string>
-	<string>AddressBook</string>
+	<string>permission</string>
 	<string>UIKit</string>
 	<string>Toast</string>
 	<string>sqflite</string>
 	<string>Flutter</string>
 	<string>CoreLocation</string>
 	<string>Photos</string>
+	<string>UserNotifications</string>
 	<string>XCTest</string>
 	<string>Intents</string>
-	<string>UserNotifications</string>
 	<string>in</string>
 	<string>StoreKit</string>
 	<string>CoreBluetooth</string>
 	<string>FlutterMacOS</string>
-	<string>MediaPlayer</string>
+	<string>CoreTelephony</string>
 	<string>sqlite3</string>
 </array>
 </plist>

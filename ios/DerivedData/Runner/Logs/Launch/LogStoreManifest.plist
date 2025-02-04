@@ -67,6 +67,67 @@
 			<key>uniqueIdentifier</key>
 			<string>E3C6FF09-5E0A-43AA-89C5-A397EA99ACE4</string>
 		</dict>
+		<key>E579CE21-4A5F-4DD5-A64A-4A03F83F6610</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>BC69DAD4-7A47-4249-A64F-184D137EA10F</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>170</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Runner-2025.02.03_02-55-42--0700.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>169</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Runner project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Runner</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Runner</string>
+			<key>timeStartedRecording</key>
+			<real>760269342.91207802</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Runner</string>
+			<key>uniqueIdentifier</key>
+			<string>E579CE21-4A5F-4DD5-A64A-4A03F83F6610</string>
+		</dict>
 	</dict>
 </dict>
 </plist>
