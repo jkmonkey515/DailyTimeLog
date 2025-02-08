@@ -201,35 +201,39 @@ class StatisticsView extends GetView<StatisticsController> {
               ),
               SizedBox(
                 //height: 300,
-                child: SfCartesianChart(
-                  zoomPanBehavior: ZoomPanBehavior(enableDoubleTapZooming: true, enablePanning: true),
-                  plotAreaBorderWidth: 0,
-                  primaryXAxis: const CategoryAxis(
-                      majorGridLines: MajorGridLines(width: 0),
-                      labelIntersectAction: AxisLabelIntersectAction.wrap,
-                      crossesAt: 0, //_crossAt,
-                      placeLabelsNearAxisLine: false,
-                      //labelRotation: 10,
+                child: IgnorePointer(
+                  child: SfCartesianChart(
+                    zoomPanBehavior: ZoomPanBehavior(enableDoubleTapZooming: true, enablePanning: true),
+                    plotAreaBorderWidth: 0,
+                    primaryXAxis: const CategoryAxis(
+                        majorGridLines: MajorGridLines(width: 0),
+                        labelIntersectAction: AxisLabelIntersectAction.wrap,
+                        crossesAt: 0, //_crossAt,
+                        placeLabelsNearAxisLine: false,
+                        //labelRotation: 10,
+                    ),
+                    primaryYAxis: NumericAxis(
+                        axisLine: AxisLine(width: 0),
+                        minimum: 0,
+                        maximum: controller.maxValueOfBarchart,
+                        majorTickLines: MajorTickLines(size: 0)),
+                    series: controller.getSeries(),
+                    tooltipBehavior: TooltipBehavior(
+                        enable: true, header: '', canShowMarker: false),
                   ),
-                  primaryYAxis: NumericAxis(
-                      axisLine: AxisLine(width: 0),
-                      minimum: 0,
-                      maximum: controller.maxValueOfBarchart,
-                      majorTickLines: MajorTickLines(size: 0)),
-                  series: controller.getSeries(),
-                  tooltipBehavior: TooltipBehavior(
-                      enable: true, header: '', canShowMarker: false),
                 ),
               ),
               const VSpaceWith(height: 20),
-              SfCircularChart(
-                legend: const Legend(
-                    isVisible: true,
-                    overflowMode: LegendItemOverflowMode.wrap
+              IgnorePointer(
+                child: SfCircularChart(
+                  legend: const Legend(
+                      isVisible: true,
+                      overflowMode: LegendItemOverflowMode.wrap
+                  ),
+                  series: controller.getDefaultDoughnutSeries(),
+                  tooltipBehavior: TooltipBehavior(
+                      enable: true, format: 'point.x : point.y%'),
                 ),
-                series: controller.getDefaultDoughnutSeries(),
-                tooltipBehavior: TooltipBehavior(
-                    enable: true, format: 'point.x : point.y%'),
               ),
             ],
           ),
