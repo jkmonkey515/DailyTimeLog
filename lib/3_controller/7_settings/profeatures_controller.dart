@@ -58,7 +58,7 @@ class ProfeaturesController extends GetxController {
         productIds = {'trainee.iap.profeature'};
       }
       final ProductDetailsResponse response = await iap.queryProductDetails(productIds);
-      print(response.notFoundIDs);
+      //print(response.notFoundIDs);
       //print(response.productIds);
       if (response.notFoundIDs.isEmpty) {
         final paymentWrapper = SKPaymentQueueWrapper();

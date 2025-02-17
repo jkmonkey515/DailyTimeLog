@@ -26,7 +26,17 @@ class ProfeaturesView extends GetView<ProfeaturesController> {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
+        actions: [
+          GestureDetector(
+            onTap: (){controller.restoreIap();},
+            child: const Padding(
+              padding: EdgeInsets.only(right: 8.0),
+              child: Text('Restore'),
+            ),
+          )
+        ],
       ),
+
       body:  SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
